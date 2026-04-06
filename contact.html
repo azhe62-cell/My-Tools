@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Support - Free online tools for everyone. Premium design and functionality.">
+    <title>Contact Support | My Tools</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-gem text-gold filter-drop-shadow"></i>
+            <h2>My Tools</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="index.html#tools" class="nav-btn" onclick="if(typeof openTool !== 'undefined') openTool('qr-tool');"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+            <li><a href="blog.html" class="nav-btn"><i class="fa-solid fa-blog"></i> Blog / Guides</a></li>
+            <li><a href="about.html" class="nav-btn"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="contact.html" class="nav-btn"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="ad-placeholder sidebar-ad hover-up" style="margin-top:auto; height:250px; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212, 175, 55, 0.3); color:rgba(255,255,255,0.5); border-radius:12px;">
+            <p><i class="fa-solid fa-rectangle-ad mb-2 d-block text-gold text-center" style="font-size: 2rem;"></i>AdSense Space</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="topbar">
+            <div class="mobile-toggle hover-up"><i class="fa-solid fa-bars"></i></div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search text-gold"></i>
+                <input type="text" placeholder="Search tools or articles...">
+            </div>
+            <div class="user-actions">
+                <button class="btn btn-primary glow-btn shadow-gold" style="padding: 10px 20px;"><i class="fa-solid fa-crown me-1"></i> Premium</button>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+
+            <section class="page-section glass-card p-5 slide-up mt-5 mx-auto" style="max-width: 750px;">
+                <div class="text-center mb-5">
+                    <h1 class="gradient-text lg-text mb-3" style="font-size: 3rem;">Initiate Protocol</h1>
+                    <p class="text-muted" style="font-size: 1.1rem;">Securely transmit inquiries, feature requests, or enterprise support needs.</p>
+                </div>
+                
+                <div class="contact-layout mt-4">
+                    <form id="contact-form" onsubmit="event.preventDefault(); alert('Transmission secured and logged. The team will review shortly.');" style="background:rgba(0,0,0,0.2); padding: 2.5rem; border-radius:16px; border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="form-group mb-4">
+                            <label class="text-gold mb-2 d-block" style="font-weight: 600; font-size:1.1rem;">Authorized Identifier</label>
+                            <input type="text" class="modern-input" required placeholder="Executive Name" style="padding: 15px;">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-gold mb-2 d-block" style="font-weight: 600; font-size:1.1rem;">Secure Routing Address</label>
+                            <input type="email" class="modern-input" required placeholder="alias@domain.com" style="padding: 15px;">
+                        </div>
+                        <div class="form-group mb-5">
+                            <label class="text-gold mb-2 d-block" style="font-weight: 600; font-size:1.1rem;">Encrypted Payload</label>
+                            <textarea class="modern-input custom-scrollbar" style="min-height: 180px; resize:vertical; padding: 15px;" required placeholder="Detail the core constraints or proposals here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 glow-btn shadow-gold hover-up" style="padding: 18px; font-size:1.2rem; font-weight:700;"><i class="fa-solid fa-satellite-dish me-2"></i> Transmit Data</button>
+                        <p class="text-center mt-4 text-sm" style="color: #777; font-weight:500;"><i class="fa-solid fa-shield-halved me-1"></i> End-to-End Encrypted Node.</p>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <p style="color: #666; margin-top: 10px;">&copy; 2026 My Tools. Premium SaaS Dashboard Concept.</p>
+            </div>
+        </footer>
+    </main>
+    <!-- Tool Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/tools.js"></script>
+</body>
+</html>

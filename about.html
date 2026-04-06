@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Us - Free online tools for everyone. Premium design and functionality.">
+    <title>About Us | My Tools</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-gem text-gold filter-drop-shadow"></i>
+            <h2>My Tools</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="index.html#tools" class="nav-btn" onclick="if(typeof openTool !== 'undefined') openTool('qr-tool');"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+            <li><a href="blog.html" class="nav-btn"><i class="fa-solid fa-blog"></i> Blog / Guides</a></li>
+            <li><a href="about.html" class="nav-btn"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="contact.html" class="nav-btn"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="ad-placeholder sidebar-ad hover-up" style="margin-top:auto; height:250px; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212, 175, 55, 0.3); color:rgba(255,255,255,0.5); border-radius:12px;">
+            <p><i class="fa-solid fa-rectangle-ad mb-2 d-block text-gold text-center" style="font-size: 2rem;"></i>AdSense Space</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="topbar">
+            <div class="mobile-toggle hover-up"><i class="fa-solid fa-bars"></i></div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search text-gold"></i>
+                <input type="text" placeholder="Search tools or articles...">
+            </div>
+            <div class="user-actions">
+                <button class="btn btn-primary glow-btn shadow-gold" style="padding: 10px 20px;"><i class="fa-solid fa-crown me-1"></i> Premium</button>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+
+            <section class="page-section glass-card p-5 slide-up mt-5 text-center mx-auto" style="max-width: 850px;">
+                <h1 class="gradient-text lg-text mb-5" style="font-size: 3.5rem;">The Vision</h1>
+                <div class="about-content mt-4" style="line-height: 1.9;">
+                    <i class="fa-solid fa-gem text-gold mb-5 filter-drop-shadow" style="font-size: 6rem;"></i>
+                    <p class="mb-5" style="font-size: 1.5rem; font-weight: 500; color: #fff;">Our core objective is providing robust, uncompromised, and elite online tools accessible to all professionals.</p>
+                    <p class="text-muted mb-4" style="font-size: 1.15rem;">We've engineered simplicity, high-velocity processing, and an unparalleled premium user experience. Whether you're integrating logic flows, a data scientist, or an executive scaling operations, our platform guarantees maximum efficacy without friction.</p>
+                    <p class="text-muted" style="font-size: 1.15rem;">Architected on advanced modern frameworks, "My Tools" transcends basic utilities with a bespoke, zero-latency luxury dashboard interface.</p>
+                </div>
+            </section>
+            
+            <div class="ad-placeholder banner-ad my-5 mx-auto hover-up" style="height:120px; max-width:850px; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212,175,55,0.2); color:#666; border-radius:12px;">
+                <p>Strategic Partnership Slot</p>
+            </div>
+
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <p style="color: #666; margin-top: 10px;">&copy; 2026 My Tools. Premium SaaS Dashboard Concept.</p>
+            </div>
+        </footer>
+    </main>
+    <!-- Tool Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/tools.js"></script>
+</body>
+</html>

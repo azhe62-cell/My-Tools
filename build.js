@@ -1,0 +1,452 @@
+const fs = require('fs');
+const path = require('path');
+
+const baseDir = "f:/My Tools";
+
+const dirs = [
+    "blog"
+];
+
+dirs.forEach(d => {
+    fs.mkdirSync(path.join(baseDir, d), { recursive: true });
+});
+
+const blogTitles = [
+    "What is a QR Code and how does it work?",
+    "How to create a QR Code for free (step-by-step)",
+    "QR Code for WhatsApp: Complete guide",
+    "Are QR Codes safe?",
+    "How to increase typing speed (WPM guide)",
+    "What is a good typing speed in 2026?",
+    "Best free typing test tools online",
+    "How many words is 1000 characters?",
+    "Best free word counter tools",
+    "Character vs word count explained",
+    "How to calculate age manually",
+    "Age difference calculator guide",
+    "Top 10 free online tools for students",
+    "Best productivity tools websites in 2026",
+    "Free online tools you should use daily"
+];
+
+function toSlug(title) {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '.html';
+}
+
+function generateHtml(title, content, currentPath = "") {
+    const prefix = currentPath === "blog" ? "../" : "";
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="${title} - Free online tools for everyone. Premium design and functionality.">
+    <title>${title} | My Tools</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="${prefix}assets/css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-gem text-gold filter-drop-shadow"></i>
+            <h2>My Tools</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="${prefix}index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="${prefix}index.html#tools" class="nav-btn" onclick="if(typeof openTool !== 'undefined') openTool('qr-tool');"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+            <li><a href="${prefix}blog.html" class="nav-btn"><i class="fa-solid fa-blog"></i> Blog / Guides</a></li>
+            <li><a href="${prefix}about.html" class="nav-btn"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="${prefix}contact.html" class="nav-btn"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="ad-placeholder sidebar-ad hover-up" style="margin-top:auto; height:250px; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212, 175, 55, 0.3); color:rgba(255,255,255,0.5); border-radius:12px;">
+            <p><i class="fa-solid fa-rectangle-ad mb-2 d-block text-gold text-center" style="font-size: 2rem;"></i>AdSense Space</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="topbar">
+            <div class="mobile-toggle hover-up"><i class="fa-solid fa-bars"></i></div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search text-gold"></i>
+                <input type="text" placeholder="Search tools or articles...">
+            </div>
+            <div class="user-actions">
+                <button class="btn btn-primary glow-btn shadow-gold" style="padding: 10px 20px;"><i class="fa-solid fa-crown me-1"></i> Premium</button>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+${content}
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="${prefix}about.html">About Us</a>
+                    <a href="${prefix}contact.html">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <p style="color: #666; margin-top: 10px;">&copy; 2026 My Tools. Premium SaaS Dashboard Concept.</p>
+            </div>
+        </footer>
+    </main>
+    <!-- Tool Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="${prefix}assets/js/main.js"></script>
+    <script src="${prefix}assets/js/tools.js"></script>
+</body>
+</html>`;
+}
+
+// Generate Blog Pages
+blogTitles.forEach(title => {
+    const slug = toSlug(title);
+    const content = `
+            <article class="blog-post slide-up">
+                <h1 class="gradient-text lg-text" style="font-size: 2.8rem;">${title}</h1>
+                <div class="post-meta mt-3 mb-4" style="font-size: 1.1rem;">
+                    <span><i class="fa-regular fa-calendar text-gold"></i> April 6, 2026</span>
+                    <span style="margin-left: 20px;"><i class="fa-regular fa-clock text-gold"></i> 5 min read</span>
+                </div>
+                <div class="post-content glass-card p-5">
+                    <p class="mb-4 lead-text" style="font-size: 1.25rem; line-height: 1.6;">Welcome to our comprehensive guide on <strong>${title}</strong>. This article will walk you through exactly what you need to know and how our premium tools can help.</p>
+                    
+                    <h2 class="mt-5 mb-3 text-gold" style="font-size: 1.8rem; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">The Basics</h2>
+                    <p class="mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.8;">Understanding and utilizing online tools effectively can save you hours of work. In this guide, we dive deep into the specific methods and best practices regarding ${title}. Modern workflows rely heavily on rapid access to reliable utilities.</p>
+                    
+                    <h2 class="mt-5 mb-3 text-gold" style="font-size: 1.8rem; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">Why Quality Matters</h2>
+                    <p class="mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.8;">In 2026, efficiency is key. By using the right tools and strategies, professionals, students, and businesses can automate mundane tasks and focus on impactful work. Our specialized utilities ensure precise results every time.</p>
+                    
+                    <div class="ad-placeholder banner-ad my-5 hover-up" style="height:120px; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212,175,55,0.3); color:#888; border-radius:12px;">
+                        <p>In-Article Ad Space</p>
+                    </div>
+
+                    <h2 class="mt-5 mb-3 text-gold" style="font-size: 1.8rem; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px;">Taking Action</h2>
+                    <p class="mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.8;">Just head over to our main dashboard and select the appropriate tool. Our platform is built with speed, user-friendliness, and a stunning dark-mode aesthetic to reduce eye strain and elevate your workflow experience.</p>
+                    
+                    <div class="cta-box mt-5 p-5 text-center glass-card" style="border-color: rgba(212, 175, 55, 0.4); box-shadow: inset 0 0 20px rgba(212,175,55,0.05);">
+                        <h3 class="mb-3 gradient-text" style="font-size: 2rem;">Ready to optimize your workflow?</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1.2rem;">Use our free tools below to get started instantly.</p>
+                        <a href="../index.html" class="btn btn-primary lg-btn shadow-gold hover-up" style="font-size: 1.2rem; padding: 15px 40px;"><i class="fa-solid fa-arrow-right me-2"></i> Launch Tools</a>
+                    </div>
+                </div>
+            </article>
+    `;
+    fs.writeFileSync(path.join(baseDir, "blog", slug), generateHtml(title, content, "blog"));
+});
+
+// Blog Index
+let blogCards = "";
+blogTitles.forEach(title => {
+    blogCards += `
+                <div class="blog-card glass-card">
+                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
+                    <div class="blog-card-content p-4">
+                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/${toSlug(title)}" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">${title}</a></h3>
+                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
+                        <a href="blog/${toSlug(title)}" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>`;
+});
+
+fs.writeFileSync(path.join(baseDir, "blog.html"), generateHtml("Insights & Guides", `
+            <section class="page-section slide-up">
+                <div class="section-header text-center mb-5">
+                    <h1 class="gradient-text lg-text" style="font-size: 3rem;">Premium Insights</h1>
+                    <p class="text-muted mt-3" style="font-size: 1.2rem;">Discover tips, tutorials, and deep dives into productivity tools designed for 2026.</p>
+                </div>
+                <div class="blog-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem;">
+                    ${blogCards}
+                </div>
+            </section>
+`));
+
+// Index Page Content
+const indexContent = `
+            <!-- Hero Section -->
+            <section class="hero text-center slide-up mb-5 glass-card" style="padding: 5rem 2rem; border-radius: 20px; background: radial-gradient(circle at top, rgba(212,175,55,0.05) 0%, rgba(10,10,10,0.8) 100%);">
+                <h1 class="gradient-text" style="font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 2rem; letter-spacing: -1px;">Next-Gen Online Tools<br>Fast, Simple & Powerful</h1>
+                <p class="text-muted mb-5" style="font-size: 1.3rem; max-width: 650px; margin: 0 auto 2.5rem; line-height: 1.6;">Generate QR codes, execute heavy calculations, and boost productivity with our premium suite of responsive utilities.</p>
+                <div style="display:flex; justify-content:center; gap: 20px; flex-wrap:wrap;">
+                    <a href="#tools" class="btn btn-primary lg-btn glow-btn shadow-gold" style="font-size: 1.2rem; padding: 16px 36px;"><i class="fa-solid fa-bolt me-2"></i> Start Exploring</a>
+                    <a href="blog.html" class="btn btn-outline lg-btn hover-up" style="font-size: 1.2rem; padding: 16px 36px;">Read Guides</a>
+                </div>
+            </section>
+
+            <div class="ad-placeholder banner-ad my-5 hover-up" style="height:100px; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212,175,55,0.2); color:#666; border-radius:12px;">
+                <p>Premium Sponsorship Banner</p>
+            </div>
+
+            <!-- Tools Sections -->
+            <section id="tools" class="tools-section mt-5 fade-in scroll-mt-px">
+                <div class="section-header text-center mb-5">
+                    <h2 class="gradient-text lg-text" style="font-size: 3rem;">Our Premium Collection</h2>
+                    <p class="text-muted mt-2" style="font-size: 1.1rem;">Select a master tool below to begin instantly</p>
+                </div>
+
+                <div class="tools-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('qr-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-qrcode text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">QR Generator</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Create highly customizable QR codes with unlimited capacity instantly.</p>
+                    </div>
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('barcode-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-barcode text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">Barcode Gen</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Generate universal standard barcodes for retail and inventory easily.</p>
+                    </div>
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('word-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-spell-check text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">Word Counter</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Count words, characters, and sentences with robust real-time metrics.</p>
+                    </div>
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('typing-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-keyboard text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">Typing Matrix</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Check your WPM, error threshold, and accuracy speed dynamically.</p>
+                    </div>
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('age-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-calendar-check text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">Age Analytics</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Calculate complex age metrics down to exact days from any DOB.</p>
+                    </div>
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('currency-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-comments-dollar text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">Live Exchange</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Instant global exchange rate conversion for 80+ top currencies.</p>
+                    </div>
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('morse-tool')">
+                        <div class="icon-wrap mb-4"><i class="fa-solid fa-wave-square text-gold fa-3x filter-drop-shadow"></i></div>
+                        <h3 class="mb-3" style="font-size: 1.4rem;">Morse Telecom</h3>
+                        <p class="text-muted text-sm" style="line-height: 1.5;">Translate raw text arrays into morse code & vice versa securely.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tool Container (Hidden by default, shown when tool is clicked) -->
+            <section id="tool-container" class="tool-view hidden fade-in mt-5 pt-3">
+                <button class="btn btn-outline back-btn mb-5 hover-up" onclick="closeTool()" style="padding: 10px 20px;"><i class="fa-solid fa-arrow-left me-2"></i> Back to Dashboard</button>
+                
+                <!-- QR Code Tool -->
+                <div id="qr-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                    <h2 class="gradient-text mb-5 lg-text text-center">Premium QR Generator</h2>
+                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                        <div class="tool-input flex-col">
+                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Enter Raw Text or Valid URL</label>
+                            <input type="text" id="qr-input" class="modern-input mb-4" placeholder="https://example.com" style="padding: 16px;">
+                            <button id="qr-btn" class="btn btn-primary w-100 shadow-gold hover-up" style="padding: 16px; font-size:1.1rem;"><i class="fa-solid fa-wand-magic-sparkles me-2"></i> Generate QR Code</button>
+                        </div>
+                        <div class="tool-output">
+                            <div id="qrcode-canvas" class="output-box glass-box flex-center filter-drop-shadow" style="min-height: 300px; padding: 2rem; background:rgba(0,0,0,0.4); border-radius:16px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barcode Tool -->
+                <div id="barcode-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                    <h2 class="gradient-text mb-5 lg-text text-center">Barcode Studio</h2>
+                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                        <div class="tool-input flex-col">
+                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Scan Data / Serial Value</label>
+                            <input type="text" id="barcode-input" class="modern-input mb-4" placeholder="Ex: 84392011" style="padding: 16px;">
+                            <button id="barcode-btn" class="btn btn-primary w-100 shadow-gold hover-up" style="padding: 16px; font-size:1.1rem;"><i class="fa-solid fa-barcode me-2"></i> Render Barcode</button>
+                        </div>
+                        <div class="tool-output glass-box flex-center filter-drop-shadow" style="min-height: 300px; background:rgba(0,0,0,0.4); border-radius:16px; overflow:hidden;">
+                            <svg id="barcode-canvas" style="max-width:100%; height:auto; padding:1rem;"></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Word Counter -->
+                <div id="word-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                    <h2 class="gradient-text mb-5 lg-text text-center">Live Text Insights</h2>
+                    <div class="tool-layout-vertical flex-col">
+                        <textarea id="word-input" class="modern-input custom-scrollbar" style="min-height: 300px; resize: vertical; padding: 20px; font-size: 1.1rem; line-height:1.6;" placeholder="Type, paste or inject your premium content here to begin analysis..."></textarea>
+                        <div class="stats-grid mt-5" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background: rgba(0,0,0,0.3);">
+                                <span class="stat-num text-gold gradient-text" style="font-size:3.5rem; font-weight:800;" id="word-count">0</span>
+                                <span class="stat-label text-muted d-block mt-3" style="font-size:1.1rem; font-weight:500;">Total Words</span>
+                            </div>
+                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background: rgba(0,0,0,0.3);">
+                                <span class="stat-num text-gold gradient-text" style="font-size:3.5rem; font-weight:800;" id="char-count">0</span>
+                                <span class="stat-label text-muted d-block mt-3" style="font-size:1.1rem; font-weight:500;">Total Characters</span>
+                            </div>
+                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background: rgba(0,0,0,0.3);">
+                                <span class="stat-num text-gold gradient-text" style="font-size:3.5rem; font-weight:800;" id="char-no-space">0</span>
+                                <span class="stat-label text-muted d-block mt-3" style="font-size:1.1rem; font-weight:500;">Without Spaces</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Test -->
+                <div id="typing-tool" class="tool-interface glass-card p-5 hidden slide-up mt-3">
+                    <div class="text-center mb-5">
+                        <h2 class="gradient-text lg-text mb-2">Reflex Typing Matrix</h2>
+                        <p class="text-muted text-sm">Measure your cognitive and physical keystroke velocity.</p>
+                    </div>
+                    <div class="typing-container flex-col">
+                        <div class="typing-stats stats-grid mb-5" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.2);">
+                                <span class="stat-label text-muted d-block mb-2">Timer Left</span>
+                                <span class="stat-num text-gold" style="font-size:2.8rem; font-weight:800;" id="time-display">60s</span>
+                            </div>
+                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.2);">
+                                <span class="stat-label text-muted d-block mb-2">Net WPM</span>
+                                <span class="stat-num text-gold" style="font-size:2.8rem; font-weight:800;" id="wpm-display">0</span>
+                            </div>
+                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.2);">
+                                <span class="stat-label text-muted d-block mb-2">Precision</span>
+                                <span class="stat-num text-gold" style="font-size:2.8rem; font-weight:800;" id="acc-display">100%</span>
+                            </div>
+                        </div>
+                        <div class="difficulty-select mb-4 text-center" style="display:flex; justify-content:center; gap: 15px;">
+                            <button class="btn btn-outline diff-btn active" data-diff="easy" style="padding:10px 25px;">Level: Alpha</button>
+                            <button class="btn btn-outline diff-btn" data-diff="medium" style="padding:10px 25px;">Level: Beta</button>
+                            <button class="btn btn-outline diff-btn" data-diff="hard" style="padding:10px 25px;">Level: Sigma</button>
+                        </div>
+                        <div class="glass-box p-5 text-box mb-4 br-12" style="font-size: 1.4rem; line-height: 1.8; color: #ddd; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); text-align:center;">
+                            <p id="quote-display" class="quote-text m-0" style="font-weight:300;">Initiate sequence to display matrix target string...</p>
+                        </div>
+                        <textarea id="typing-input" class="modern-input custom-scrollbar" style="min-height:120px; font-size:1.2rem; padding: 20px;" placeholder="Awaiting initialization..." disabled></textarea>
+                        <button id="start-typing-btn" class="btn btn-primary mt-4 w-100 shadow-gold glow-btn" style="padding: 18px; font-size: 1.2rem; font-weight:700;"><i class="fa-solid fa-power-off me-2"></i> Initialize Test</button>
+                    </div>
+                </div>
+
+                <!-- Age Calculator -->
+                <div id="age-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                    <h2 class="gradient-text mb-5 lg-text text-center">Chronology Engine</h2>
+                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                        <div class="tool-input flex-col">
+                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Origin Date</label>
+                            <input type="date" id="dob-input" class="modern-input mb-4" style="padding: 16px;">
+                            <button id="age-btn" class="btn btn-primary w-100 shadow-gold hover-up" style="padding: 16px; font-size:1.1rem;"><i class="fa-solid fa-calculator me-2"></i> Compute Matrix</button>
+                        </div>
+                        <div class="tool-output h-100">
+                            <div class="glass-box text-center flex-col filter-drop-shadow" style="padding: 4rem 2rem; align-items:center; justify-content:center; height:100%; border-radius:16px; background:rgba(0,0,0,0.4);">
+                                <h3 id="age-result" class="text-gold gradient-text mb-3" style="font-size: 4rem; font-weight:800; line-height:1;">--</h3>
+                                <p id="age-details" class="text-muted" style="font-size:1.2rem;">Years, Months, Days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Currency -->
+                <div id="currency-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                    <h2 class="gradient-text mb-5 lg-text text-center">Global Exchange Terminal</h2>
+                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                        <div class="tool-input flex-col">
+                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Target Value</label>
+                            <input type="number" id="curr-amount" class="modern-input mb-4" value="100" min="0" step="any" style="padding: 16px; font-size:1.2rem;">
+                            
+                            <div class="flex-row mb-4" style="display:flex; gap:20px;">
+                                <div style="flex:1;">
+                                    <label class="mb-2 text-muted d-block font-weight-bold">Base</label>
+                                    <select id="curr-from" class="modern-input custom-select" style="padding: 14px;">
+                                        <option value="USD">USD ($) - US Dollar</option>
+                                        <option value="EUR">EUR (€) - Euro</option>
+                                        <option value="GBP">GBP (£) - British Pound</option>
+                                        <option value="JPY">JPY (¥) - Japanese Yen</option>
+                                        <option value="INR">INR (₹) - Indian Rupee</option>
+                                        <option value="AUD">AUD ($) - Australian Dollar</option>
+                                        <option value="CAD">CAD ($) - Canadian Dollar</option>
+                                    </select>
+                                </div>
+                                <div style="flex:1;">
+                                    <label class="mb-2 text-muted d-block font-weight-bold">Convert To</label>
+                                    <select id="curr-to" class="modern-input custom-select" style="padding: 14px;">
+                                        <option value="EUR" selected>EUR (€) - Euro</option>
+                                        <option value="USD">USD ($) - US Dollar</option>
+                                        <option value="GBP">GBP (£) - British Pound</option>
+                                        <option value="JPY">JPY (¥) - Japanese Yen</option>
+                                        <option value="INR">INR (₹) - Indian Rupee</option>
+                                        <option value="AUD">AUD ($) - Australian Dollar</option>
+                                        <option value="CAD">CAD ($) - Canadian Dollar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="curr-btn" class="btn btn-primary w-100 shadow-gold hover-up mt-2" style="padding: 16px; font-size:1.1rem;"><i class="fa-solid fa-rotate me-2"></i> Process Conversion</button>
+                        </div>
+                        <div class="tool-output h-100">
+                            <div class="glass-box text-center flex-col filter-drop-shadow" style="padding: 4rem 2rem; align-items:center; justify-content:center; height:100%; border-radius:16px; background:rgba(0,0,0,0.4);">
+                                <p class="stat-label text-muted mb-3" style="font-size:1.1rem; text-transform:uppercase; letter-spacing:1px;">Net Result Value</p>
+                                <h3 id="curr-result" class="text-gold gradient-text" style="font-size: 3.5rem; font-weight:800;">---</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Morse Code -->
+                <div id="morse-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                    <h2 class="gradient-text mb-5 lg-text text-center">Cipher & Telecom Converter</h2>
+                    <div class="tool-layout-vertical flex-col max-w-800 mx-auto" style="max-width: 900px; margin:0 auto;">
+                        <textarea id="morse-input" class="modern-input mb-4 custom-scrollbar" style="min-height: 180px; resize:vertical; padding: 20px; font-size:1.2rem; line-height:1.6;" placeholder="Inject text cipher array, or morse patterns separated by space..."></textarea>
+                        
+                        <div class="flex-row mb-5" style="display:flex; gap:20px;">
+                            <button id="to-morse-btn" class="btn btn-primary flex-1 shadow-gold hover-up" style="padding:16px; font-size:1.1rem;"><i class="fa-solid fa-lock me-2"></i> Encode to Morse</button>
+                            <button id="to-text-btn" class="btn btn-outline flex-1 hover-up" style="padding:16px; font-size:1.1rem;"><i class="fa-solid fa-unlock me-2"></i> Decode to Text</button>
+                        </div>
+                        
+                        <div class="glass-box p-5 text-gold break-words flex-center filter-drop-shadow" id="morse-output" style="min-height:200px; font-size:2rem; font-weight:600; letter-spacing:4px; background:rgba(0,0,0,0.6); border: 1px solid rgba(212,175,55,0.3); border-radius:16px; color:#f3e5ab; text-align:center;">
+                            Awaiting Signal...
+                        </div>
+                    </div>
+                </div>
+            </section>
+`;
+
+fs.writeFileSync(path.join(baseDir, "index.html"), generateHtml("Dashboard", indexContent));
+
+// About
+const aboutContent = `
+            <section class="page-section glass-card p-5 slide-up mt-5 text-center mx-auto" style="max-width: 850px;">
+                <h1 class="gradient-text lg-text mb-5" style="font-size: 3.5rem;">The Vision</h1>
+                <div class="about-content mt-4" style="line-height: 1.9;">
+                    <i class="fa-solid fa-gem text-gold mb-5 filter-drop-shadow" style="font-size: 6rem;"></i>
+                    <p class="mb-5" style="font-size: 1.5rem; font-weight: 500; color: #fff;">Our core objective is providing robust, uncompromised, and elite online tools accessible to all professionals.</p>
+                    <p class="text-muted mb-4" style="font-size: 1.15rem;">We've engineered simplicity, high-velocity processing, and an unparalleled premium user experience. Whether you're integrating logic flows, a data scientist, or an executive scaling operations, our platform guarantees maximum efficacy without friction.</p>
+                    <p class="text-muted" style="font-size: 1.15rem;">Architected on advanced modern frameworks, "My Tools" transcends basic utilities with a bespoke, zero-latency luxury dashboard interface.</p>
+                </div>
+            </section>
+            
+            <div class="ad-placeholder banner-ad my-5 mx-auto hover-up" style="height:120px; max-width:850px; background:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212,175,55,0.2); color:#666; border-radius:12px;">
+                <p>Strategic Partnership Slot</p>
+            </div>
+`;
+fs.writeFileSync(path.join(baseDir, "about.html"), generateHtml("About Us", aboutContent));
+
+// Contact
+const contactContent = `
+            <section class="page-section glass-card p-5 slide-up mt-5 mx-auto" style="max-width: 750px;">
+                <div class="text-center mb-5">
+                    <h1 class="gradient-text lg-text mb-3" style="font-size: 3rem;">Initiate Protocol</h1>
+                    <p class="text-muted" style="font-size: 1.1rem;">Securely transmit inquiries, feature requests, or enterprise support needs.</p>
+                </div>
+                
+                <div class="contact-layout mt-4">
+                    <form id="contact-form" onsubmit="event.preventDefault(); alert('Transmission secured and logged. The team will review shortly.');" style="background:rgba(0,0,0,0.2); padding: 2.5rem; border-radius:16px; border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="form-group mb-4">
+                            <label class="text-gold mb-2 d-block" style="font-weight: 600; font-size:1.1rem;">Authorized Identifier</label>
+                            <input type="text" class="modern-input" required placeholder="Executive Name" style="padding: 15px;">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-gold mb-2 d-block" style="font-weight: 600; font-size:1.1rem;">Secure Routing Address</label>
+                            <input type="email" class="modern-input" required placeholder="alias@domain.com" style="padding: 15px;">
+                        </div>
+                        <div class="form-group mb-5">
+                            <label class="text-gold mb-2 d-block" style="font-weight: 600; font-size:1.1rem;">Encrypted Payload</label>
+                            <textarea class="modern-input custom-scrollbar" style="min-height: 180px; resize:vertical; padding: 15px;" required placeholder="Detail the core constraints or proposals here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 glow-btn shadow-gold hover-up" style="padding: 18px; font-size:1.2rem; font-weight:700;"><i class="fa-solid fa-satellite-dish me-2"></i> Transmit Data</button>
+                        <p class="text-center mt-4 text-sm" style="color: #777; font-weight:500;"><i class="fa-solid fa-shield-halved me-1"></i> End-to-End Encrypted Node.</p>
+                    </form>
+                </div>
+            </section>
+`;
+fs.writeFileSync(path.join(baseDir, "contact.html"), generateHtml("Contact Support", contactContent));
+
+console.log("HTML Generation Complete.");
