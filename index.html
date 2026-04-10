@@ -18,11 +18,14 @@
             <h2>My Tools</h2>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="index.html#tools" class="nav-btn" onclick="if(typeof openTool !== 'undefined') openTool('qr-tool');"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
-            <li><a href="blog.html" class="nav-btn"><i class="fa-solid fa-blog"></i> Blog / Guides</a></li>
-            <li><a href="about.html" class="nav-btn"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
-            <li><a href="contact.html" class="nav-btn"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+            <li class="nav-btn active cursor-pointer" data-target="dashboard"><i class="fa-solid fa-house"></i> Dashboard</li>
+            <li class="nav-btn cursor-pointer" data-target="qr"><i class="fa-solid fa-qrcode"></i> QR Generator</li>
+            <li class="nav-btn cursor-pointer" data-target="barcode"><i class="fa-solid fa-barcode"></i> Barcode Gen</li>
+            <li class="nav-btn cursor-pointer" data-target="word"><i class="fa-solid fa-spell-check"></i> Word Counter</li>
+            <li class="nav-btn cursor-pointer" data-target="typing"><i class="fa-solid fa-keyboard"></i> Typing Matrix</li>
+            <li class="nav-btn cursor-pointer" data-target="age"><i class="fa-solid fa-calendar-check"></i> Age Analytics</li>
+            <li class="nav-btn cursor-pointer" data-target="currency"><i class="fa-solid fa-comments-dollar"></i> Live Exchange</li>
+            <li class="nav-btn cursor-pointer" data-target="morse"><i class="fa-solid fa-wave-square"></i> Morse Telecom</li>
         </ul>
         <div class="ad-placeholder sidebar-ad hover-up" style="margin-top:auto; height:250px; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212, 175, 55, 0.3); color:rgba(255,255,255,0.5); border-radius:12px;">
             <p><i class="fa-solid fa-rectangle-ad mb-2 d-block text-gold text-center" style="font-size: 2rem;"></i>AdSense Space</p>
@@ -36,13 +39,54 @@
                 <input type="text" placeholder="Search tools or articles...">
             </div>
             <div class="user-actions">
-                <button class="btn btn-primary glow-btn shadow-gold" style="padding: 10px 20px;"><i class="fa-solid fa-crown me-1"></i> Premium</button>
+                <button class="btn btn-primary glow-btn shadow-gold" style="padding: 10px 20px;" onclick="showPremiumModal()"><i class="fa-solid fa-crown me-1"></i> Premium</button>
             </div>
         </header>
+
+        <!-- Premium Modal -->
+        <div id="premium-modal" class="modal hidden">
+            <div class="modal-content glass-card p-5 slide-up">
+                <span class="close-modal" onclick="hidePremiumModal()">&times;</span>
+                <div class="text-center mb-5">
+                    <h2 class="gradient-text lg-text mb-2">Upgrade to Ultra Premium</h2>
+                    <p class="text-muted">Unlock the full power of the My Tools ecosystem</p>
+                </div>
+                
+                <div class="pricing-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <!-- Free Plan -->
+                    <div class="pricing-card glass-box p-4 text-center hover-up">
+                        <h3 class="mb-3">Standard Node</h3>
+                        <div class="price mb-4"><span class="currency text-gold">$</span><span class="amount lg-text text-gold">0</span><span class="period text-muted">/mo</span></div>
+                        <ul class="plan-features mb-5" style="list-style:none; padding:0; text-align:left;">
+                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> All Basic Tools</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Ad-Supported</li>
+                            <li class="mb-2 text-muted"><i class="fa-solid fa-xmark me-2"></i> Batch Processing</li>
+                            <li class="mb-2 text-muted"><i class="fa-solid fa-xmark me-2"></i> API Access</li>
+                        </ul>
+                        <button class="btn btn-outline w-100" disabled>Active Plan</button>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="pricing-card glass-box p-4 text-center hover-up" style="border: 2px solid var(--gold); background: rgba(212,175,55,0.05);">
+                        <div class="popular-badge" style="background:var(--gold); color:#000; font-size:0.7rem; font-weight:800; padding:4px 12px; border-radius:20px; position:absolute; top:-12px; left:50%; transform:translateX(-50%);">MOST POPULAR</div>
+                        <h3 class="mb-3">Premium Executive</h3>
+                        <div class="price mb-4"><span class="currency text-gold">$</span><span class="amount lg-text text-gold">9.99</span><span class="period text-muted">/mo</span></div>
+                        <ul class="plan-features mb-5" style="list-style:none; padding:0; text-align:left;">
+                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Zero Advertisements</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Priority Support</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Batch Processing</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Premium API Access</li>
+                        </ul>
+                        <button class="btn btn-primary w-100 glow-btn" id="premium-enable-btn" onclick="initiatePayment('Premium Executive', 9.99)">Enable Premium</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="content-wrapper">
 
             <!-- Hero Section -->
+            <div id="dashboard" class="tool-section active-section">
             <section class="hero text-center slide-up mb-5 glass-card" style="padding: 5rem 2rem; border-radius: 20px; background: radial-gradient(circle at top, rgba(212,175,55,0.05) 0%, rgba(10,10,10,0.8) 100%);">
                 <h1 class="gradient-text" style="font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 2rem; letter-spacing: -1px;">Next-Gen Online Tools<br>Fast, Simple & Powerful</h1>
                 <p class="text-muted mb-5" style="font-size: 1.3rem; max-width: 650px; margin: 0 auto 2.5rem; line-height: 1.6;">Generate QR codes, execute heavy calculations, and boost productivity with our premium suite of responsive utilities.</p>
@@ -64,50 +108,50 @@
                 </div>
 
                 <div class="tools-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('qr-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'qr\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-qrcode text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">QR Generator</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Create highly customizable QR codes with unlimited capacity instantly.</p>
                     </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('barcode-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'barcode\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-barcode text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">Barcode Gen</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Generate universal standard barcodes for retail and inventory easily.</p>
                     </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('word-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'word\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-spell-check text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">Word Counter</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Count words, characters, and sentences with robust real-time metrics.</p>
                     </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('typing-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'typing\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-keyboard text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">Typing Matrix</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Check your WPM, error threshold, and accuracy speed dynamically.</p>
                     </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('age-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'age\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-calendar-check text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">Age Analytics</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Calculate complex age metrics down to exact days from any DOB.</p>
                     </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('currency-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'currency\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-comments-dollar text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">Live Exchange</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Instant global exchange rate conversion for 80+ top currencies.</p>
                     </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="openTool('morse-tool')">
+                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'morse\']').click()">
                         <div class="icon-wrap mb-4"><i class="fa-solid fa-wave-square text-gold fa-3x filter-drop-shadow"></i></div>
                         <h3 class="mb-3" style="font-size: 1.4rem;">Morse Telecom</h3>
                         <p class="text-muted text-sm" style="line-height: 1.5;">Translate raw text arrays into morse code & vice versa securely.</p>
                     </div>
                 </div>
             </section>
-            
+            </div>
+
             <!-- Tool Container (Hidden by default, shown when tool is clicked) -->
-            <section id="tool-container" class="tool-view hidden fade-in mt-5 pt-3">
-                <button class="btn btn-outline back-btn mb-5 hover-up" onclick="closeTool()" style="padding: 10px 20px;"><i class="fa-solid fa-arrow-left me-2"></i> Back to Dashboard</button>
+            <!-- Tools Content Containers -->
                 
                 <!-- QR Code Tool -->
-                <div id="qr-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                <div id="qr" class="tool-section tool-interface glass-card p-5 slide-up">
                     <h2 class="gradient-text mb-5 lg-text text-center">Premium QR Generator</h2>
                     <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                         <div class="tool-input flex-col">
@@ -122,7 +166,7 @@
                 </div>
 
                 <!-- Barcode Tool -->
-                <div id="barcode-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                <div id="barcode" class="tool-section tool-interface glass-card p-5 slide-up">
                     <h2 class="gradient-text mb-5 lg-text text-center">Barcode Studio</h2>
                     <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                         <div class="tool-input flex-col">
@@ -137,7 +181,7 @@
                 </div>
 
                 <!-- Word Counter -->
-                <div id="word-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                <div id="word" class="tool-section tool-interface glass-card p-5 slide-up">
                     <h2 class="gradient-text mb-5 lg-text text-center">Live Text Insights</h2>
                     <div class="tool-layout-vertical flex-col">
                         <textarea id="word-input" class="modern-input custom-scrollbar" style="min-height: 300px; resize: vertical; padding: 20px; font-size: 1.1rem; line-height:1.6;" placeholder="Type, paste or inject your premium content here to begin analysis..."></textarea>
@@ -159,7 +203,7 @@
                 </div>
 
                 <!-- Typing Test -->
-                <div id="typing-tool" class="tool-interface glass-card p-5 hidden slide-up mt-3">
+                <div id="typing" class="tool-section tool-interface glass-card p-5 slide-up mt-3">
                     <div class="text-center mb-5">
                         <h2 class="gradient-text lg-text mb-2">Reflex Typing Matrix</h2>
                         <p class="text-muted text-sm">Measure your cognitive and physical keystroke velocity.</p>
@@ -193,7 +237,7 @@
                 </div>
 
                 <!-- Age Calculator -->
-                <div id="age-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                <div id="age" class="tool-section tool-interface glass-card p-5 slide-up">
                     <h2 class="gradient-text mb-5 lg-text text-center">Chronology Engine</h2>
                     <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                         <div class="tool-input flex-col">
@@ -211,7 +255,7 @@
                 </div>
 
                 <!-- Currency -->
-                <div id="currency-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                <div id="currency" class="tool-section tool-interface glass-card p-5 slide-up">
                     <h2 class="gradient-text mb-5 lg-text text-center">Global Exchange Terminal</h2>
                     <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                         <div class="tool-input flex-col">
@@ -256,7 +300,7 @@
                 </div>
 
                 <!-- Morse Code -->
-                <div id="morse-tool" class="tool-interface glass-card p-5 hidden slide-up">
+                <div id="morse" class="tool-section tool-interface glass-card p-5 slide-up">
                     <h2 class="gradient-text mb-5 lg-text text-center">Cipher & Telecom Converter</h2>
                     <div class="tool-layout-vertical flex-col max-w-800 mx-auto" style="max-width: 900px; margin:0 auto;">
                         <textarea id="morse-input" class="modern-input mb-4 custom-scrollbar" style="min-height: 180px; resize:vertical; padding: 20px; font-size:1.2rem; line-height:1.6;" placeholder="Inject text cipher array, or morse patterns separated by space..."></textarea>
@@ -271,10 +315,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
-
-        </div>
-        
+                </div>
         <footer>
             <div class="footer-content">
                 <div class="footer-links">
