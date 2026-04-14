@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Insights & Guides - Free online tools for everyone. Premium design and functionality.">
-    <title>Insights & Guides | My Tools</title>
+    <meta name="description" content="Blog & Guides - Free online tools for everyone. Premium design and functionality.">
+    <title>Blog & Guides | My Tools</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -18,11 +18,10 @@
             <h2>My Tools</h2>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="index.html#tools" class="nav-btn" onclick="if(typeof openTool !== 'undefined') openTool('qr-tool');"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
-            <li><a href="blog.html" class="nav-btn"><i class="fa-solid fa-blog"></i> Blog / Guides</a></li>
-            <li><a href="about.html" class="nav-btn"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
-            <li><a href="contact.html" class="nav-btn"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+            <li onclick="window.location.href='../index.html'" class="nav-btn cursor-pointer"><i class="fa-solid fa-house"></i> Home / Dashboard</li>
+            <li onclick="window.location.href='../blog.html'" class="nav-btn active cursor-pointer"><i class="fa-solid fa-blog"></i> Blog / Guides</li>
+            <li onclick="window.location.href='../about.html'" class="nav-btn cursor-pointer"><i class="fa-solid fa-circle-info"></i> About Us</li>
+            <li onclick="window.location.href='../contact.html'" class="nav-btn cursor-pointer"><i class="fa-solid fa-envelope"></i> Contact Us</li>
         </ul>
         <div class="ad-placeholder sidebar-ad hover-up" style="margin-top:auto; height:250px; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212, 175, 55, 0.3); color:rgba(255,255,255,0.5); border-radius:12px;">
             <p><i class="fa-solid fa-rectangle-ad mb-2 d-block text-gold text-center" style="font-size: 2rem;"></i>AdSense Space</p>
@@ -43,132 +42,192 @@
         <div class="content-wrapper">
 
             <section class="page-section slide-up">
-                <div class="section-header text-center mb-5">
+                <div class="section-header text-center mb-5" style="max-width: 800px; margin: 0 auto;">
                     <h1 class="gradient-text lg-text" style="font-size: 3rem;">Premium Insights</h1>
-                    <p class="text-muted mt-3" style="font-size: 1.2rem;">Discover tips, tutorials, and deep dives into productivity tools designed for 2026.</p>
+                    <p class="text-muted mt-3" style="font-size: 1.2rem;">Discover tips, tutorials, and deep dives into productivity tools designed for 2026. Increase your digital workflow easily.</p>
                 </div>
-                <div class="blog-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem;">
+                <div class="blog-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
                     
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/what-is-a-qr-code-and-how-does-it-work.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">What is a QR Code and how does it work?</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/what-is-a-qr-code-and-how-does-it-work.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/what-is-a-qr-code-and-how-does-it-work.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">What is a QR Code and how does it work?</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">In today's fast-paced digital world, you've likely seen them everywhere—from restaurant menus to bil...</p>
+                            <a href="blog/what-is-a-qr-code-and-how-does-it-work.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/how-to-create-a-qr-code-for-free-step-by-step.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How to create a QR Code for free (step-by-step)</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/how-to-create-a-qr-code-for-free-step-by-step.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/how-to-create-a-qr-code-for-free-step-by-step.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How to create a QR Code for free (step-by-step)</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Need to link physical customers to your website instantly? Creating a QR code is faster and easier t...</p>
+                            <a href="blog/how-to-create-a-qr-code-for-free-step-by-step.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/qr-code-for-whatsapp-complete-guide.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">QR Code for WhatsApp: Complete guide</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/qr-code-for-whatsapp-complete-guide.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/qr-code-for-whatsapp-complete-guide.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">QR Code for WhatsApp: Complete guide</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Sharing your WhatsApp number manually can lead to typos and missed connections. Thankfully, using a ...</p>
+                            <a href="blog/qr-code-for-whatsapp-complete-guide.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/are-qr-codes-safe.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Are QR Codes safe?</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/are-qr-codes-safe.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/are-qr-codes-safe.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Are QR Codes safe?</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">With the rise of touchless menus, mobile payments, and digital information passing, QR codes are ind...</p>
+                            <a href="blog/are-qr-codes-safe.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/how-to-increase-typing-speed-wpm-guide.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How to increase typing speed (WPM guide)</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/how-to-increase-typing-speed-wpm-guide.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/how-to-increase-typing-speed-wpm-guide.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How to increase typing speed (WPM guide)</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Becoming a faster typist dramatically improves your productivity and workflow execution. Here is a d...</p>
+                            <a href="blog/how-to-increase-typing-speed-wpm-guide.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/what-is-a-good-typing-speed-in-2026.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">What is a good typing speed in 2026?</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/what-is-a-good-typing-speed-in-2026.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/what-is-a-good-typing-speed-in-2026.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">What is a good typing speed in 2026?</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Have you ever wondered how your typing speed stacks up against the digital standards of the current ...</p>
+                            <a href="blog/what-is-a-good-typing-speed-in-2026.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/best-free-typing-test-tools-online.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Best free typing test tools online</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/best-free-typing-test-tools-online.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/best-free-typing-test-tools-online.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Best free typing test tools online</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Tracking your baseline is incredibly important to measuring your progression. The best tools offer m...</p>
+                            <a href="blog/best-free-typing-test-tools-online.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/how-many-words-is-1000-characters.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How many words is 1000 characters?</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/how-many-words-is-1000-characters.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/how-many-words-is-1000-characters.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How many words is 1000 characters?</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Whether you're drafting an essay, optimizing a meta description, or writing a tweet, understanding c...</p>
+                            <a href="blog/how-many-words-is-1000-characters.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/best-free-word-counter-tools.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Best free word counter tools</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/best-free-word-counter-tools.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/best-free-word-counter-tools.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Best free word counter tools</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Writers, SEO specialists, and students alike rely on word metrics. Finding the exact right tool is p...</p>
+                            <a href="blog/best-free-word-counter-tools.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/character-vs-word-count-explained.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Character vs word count explained</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/character-vs-word-count-explained.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/character-vs-word-count-explained.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Character vs word count explained</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">It is incredibly easy to confuse tracking constraints. Knowing exactly when to prioritize counting w...</p>
+                            <a href="blog/character-vs-word-count-explained.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/how-to-calculate-age-manually.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How to calculate age manually</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/how-to-calculate-age-manually.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/how-to-calculate-age-manually.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">How to calculate age manually</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Need to compute a rapid chronology constraint but don't have an automated calculator on hand? Here's...</p>
+                            <a href="blog/how-to-calculate-age-manually.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/age-difference-calculator-guide.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Age difference calculator guide</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/age-difference-calculator-guide.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/age-difference-calculator-guide.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Age difference calculator guide</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Understanding the precise chronological gap between two dates, two individuals, or two historical ev...</p>
+                            <a href="blog/age-difference-calculator-guide.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/top-10-free-online-tools-for-students.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Top 10 free online tools for students</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/top-10-free-online-tools-for-students.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/top-10-free-online-tools-for-students.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Top 10 free online tools for students</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">Modern academics requires extreme efficiency. The students passing with top marks have transitioned ...</p>
+                            <a href="blog/top-10-free-online-tools-for-students.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/best-productivity-tools-websites-in-2026.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Best productivity tools websites in 2026</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/best-productivity-tools-websites-in-2026.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/best-productivity-tools-websites-in-2026.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Best productivity tools websites in 2026</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">The tech environment demands extreme optimization. Which website hubs represent the absolute bleedin...</p>
+                            <a href="blog/best-productivity-tools-websites-in-2026.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card glass-card">
-                    <div class="blog-card-img"><i class="fa-solid fa-book-open fa-3x text-gold filter-drop-shadow"></i></div>
-                    <div class="blog-card-content p-4">
-                        <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;"><a href="blog/free-online-tools-you-should-use-daily.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Free online tools you should use daily</a></h3>
-                        <p class="text-muted mb-4 text-sm" style="line-height:1.6;">Learn more in our detailed guide and discover essential tips for productivity and mastery...</p>
-                        <a href="blog/free-online-tools-you-should-use-daily.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none;">Read Full Guide <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    <div class="blog-card glass-card hover-up transition" style="border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease;">
+                        <div class="blog-card-img" style="background: rgba(10,10,10,0.8); min-height: 160px; display:flex; align-items:center; justify-content:center; border-bottom: 2px solid rgba(212,175,55,0.1);">
+                            <i class="fa-solid fa-pen-nib fa-3x text-gold filter-drop-shadow"></i>
+                        </div>
+                        <div class="blog-card-content p-4" style="flex: 1; display: flex; flex-direction: column;">
+                            <h3 class="mb-3" style="font-size:1.3rem; line-height:1.4;">
+                                <a href="blog/free-online-tools-you-should-use-daily.html" style="color:#fff; text-decoration:none; transition:0.3s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#fff'">Free online tools you should use daily</a>
+                            </h3>
+                            <p class="text-muted mb-4 text-sm" style="line-height:1.6; flex: 1;">There are hidden micro-inefficiencies in your daily life. Leveraging these free online tools can opt...</p>
+                            <a href="blog/free-online-tools-you-should-use-daily.html" class="read-more btn-outline btn" style="border:none; padding:8px 0; background:none; text-align: left; margin-top: auto; display: inline-block;">Read More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
                     </div>
-                </div>
                 </div>
             </section>
 
@@ -186,9 +245,6 @@
             </div>
         </footer>
     </main>
-    <!-- Tool Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/tools.js"></script>
 </body>

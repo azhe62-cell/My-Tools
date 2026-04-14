@@ -1,48 +1,173 @@
 // 1. QR Code Generator
 const qrBtn = document.getElementById('qr-btn');
+const qrDownloadBtn = document.getElementById('qr-download-btn');
+const qrSuccessMsg = document.getElementById('qr-success-msg');
+
 if(qrBtn){
     qrBtn.addEventListener('click', () => {
         const input = document.getElementById('qr-input').value;
         const canvasContainer = document.getElementById('qrcode-canvas');
-        canvasContainer.innerHTML = ''; 
-        if(input.trim() === '') { alert('Please enter premium text or URL'); return; }
         
-        new QRCode(canvasContainer, {
-            text: input,
-            width: 250,
-            height: 250,
-            colorDark : "#d4af37",
-            colorLight : "#0a0a0a",
-            correctLevel : QRCode.CorrectLevel.H
-        });
+        if(qrDownloadBtn) qrDownloadBtn.style.display = 'none';
+        if(qrSuccessMsg) {
+            qrSuccessMsg.style.display = 'none';
+            qrSuccessMsg.style.opacity = '0';
+        }
+        
+        if(input.trim() === '') { 
+            alert('Please enter valid input'); 
+            return; 
+        }
+        
+        canvasContainer.innerHTML = ''; 
+        qrBtn.disabled = true;
+        qrBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Generating...';
+        
+        setTimeout(() => {
+            new QRCode(canvasContainer, {
+                text: input,
+                width: 250,
+                height: 250,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+            
+            qrBtn.disabled = false;
+            qrBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i> Generate QR Code';
+            
+            if(qrDownloadBtn) {
+                qrDownloadBtn.style.display = 'block';
+                qrDownloadBtn.style.opacity = '0';
+                setTimeout(() => qrDownloadBtn.style.opacity = '1', 50);
+            }
+            if(qrSuccessMsg) {
+                qrSuccessMsg.style.display = 'block';
+                setTimeout(() => qrSuccessMsg.style.opacity = '1', 50);
+            }
+        }, 300);
     });
+
+    if(qrDownloadBtn) {
+        qrDownloadBtn.addEventListener('click', () => {
+            const canvas = document.querySelector('#qrcode-canvas canvas');
+            if(canvas) {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = canvas.width;
+                tempCanvas.height = canvas.height;
+                const ctx = tempCanvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                ctx.drawImage(canvas, 0, 0);
+                
+                const url = tempCanvas.toDataURL("image/png");
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'qrcode.png';
+                a.click();
+            } else {
+                const img = document.querySelector('#qrcode-canvas img');
+                if (img && img.src) {
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = img.width || 250;
+                    tempCanvas.height = img.height || 250;
+                    const ctx = tempCanvas.getContext('2d');
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                    ctx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
+                    const url = tempCanvas.toDataURL("image/png");
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'qrcode.png';
+                    a.click();
+                }
+            }
+        });
+    }
 }
 
 // 2. Barcode Generator
 const barcodeBtn = document.getElementById('barcode-btn');
+const barcodeDownloadBtn = document.getElementById('barcode-download-btn');
+const barcodeSuccessMsg = document.getElementById('barcode-success-msg');
+
 if(barcodeBtn){
     barcodeBtn.addEventListener('click', () => {
         const input = document.getElementById('barcode-input').value;
         const canvas = document.getElementById('barcode-canvas');
-        if(input.trim() === '') { alert('Please enter code value'); return; }
+        
+        if(barcodeDownloadBtn) barcodeDownloadBtn.style.display = 'none';
+        if(barcodeSuccessMsg) {
+            barcodeSuccessMsg.style.display = 'none';
+            barcodeSuccessMsg.style.opacity = '0';
+        }
+        
+        if(input.trim() === '') { 
+            alert('Please enter valid input'); 
+            return; 
+        }
+        
         // reset canvas
         canvas.innerHTML = '';
-        try {
-            JsBarcode("#barcode-canvas", input, {
-                format: "CODE128",
-                lineColor: "#d4af37",
-                background: "#000000",
-                width: 3,
-                height: 120,
-                displayValue: true,
-                fontOptions: "bold",
-                fontSize: 22,
-                margin: 0
-            });
-        } catch(e) {
-            alert('Invalid barcode format. Use alphanumeric characters.');
-        }
+        
+        barcodeBtn.disabled = true;
+        barcodeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Generating...';
+
+        setTimeout(() => {
+            try {
+                JsBarcode("#barcode-canvas", input, {
+                    format: "CODE128",
+                    lineColor: "#000000",
+                    background: "#ffffff",
+                    width: 3,
+                    height: 120,
+                    displayValue: true,
+                    fontOptions: "bold",
+                    fontSize: 22,
+                    margin: 10
+                });
+                
+                if(barcodeDownloadBtn) {
+                    barcodeDownloadBtn.style.display = 'block';
+                    barcodeDownloadBtn.style.opacity = '0';
+                    setTimeout(() => barcodeDownloadBtn.style.opacity = '1', 50);
+                }
+                if(barcodeSuccessMsg) {
+                    barcodeSuccessMsg.style.display = 'block';
+                    setTimeout(() => barcodeSuccessMsg.style.opacity = '1', 50);
+                }
+            } catch(e) {
+                alert('Invalid barcode format. Use alphanumeric characters.');
+            }
+            barcodeBtn.disabled = false;
+            barcodeBtn.innerHTML = '<i class="fa-solid fa-barcode me-2"></i> Render Barcode';
+        }, 300);
     });
+
+    if(barcodeDownloadBtn) {
+        barcodeDownloadBtn.addEventListener('click', () => {
+            const svg = document.getElementById('barcode-canvas');
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvasElement = document.createElement("canvas");
+            const ctx = canvasElement.getContext("2d");
+            const img = new Image();
+            
+            img.onload = () => {
+                canvasElement.width = img.width;
+                canvasElement.height = img.height;
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+                ctx.drawImage(img, 0, 0);
+                
+                const url = canvasElement.toDataURL("image/png");
+                const a = document.createElement("a");
+                a.download = "barcode.png";
+                a.href = url;
+                a.click();
+            };
+            img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+        });
+    }
 }
 
 // 3. Word Counter
