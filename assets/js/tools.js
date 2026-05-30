@@ -214,19 +214,50 @@ if(ageBtn){
     });
 }
 
-// 5. Currency Calculator (Mock API)
+// 5. Currency Calculator (Live API)
 const currBtn = document.getElementById('curr-btn');
-if(currBtn) {
-    const rates = { USD: 1, EUR: 0.92, GBP: 0.79, JPY: 151.2, INR: 83.4, AUD: 1.5, CAD: 1.35 };
+const currFrom = document.getElementById('curr-from');
+const currTo = document.getElementById('curr-to');
+
+if(currBtn && currFrom && currTo) {
+    let liveRates = {};
+    
+    // Fetch live rates dynamically for all 162 worldwide currencies
+    fetch('https://api.exchangerate-api.com/v4/latest/USD')
+        .then(res => res.json())
+        .then(data => {
+            liveRates = data.rates;
+            const currencies = Object.keys(liveRates).sort();
+            
+            let optionsHTML = '';
+            currencies.forEach(currency => {
+                optionsHTML += `<option value="${currency}">${currency}</option>`;
+            });
+            
+            // Populate dropdowns with all global options
+            currFrom.innerHTML = optionsHTML;
+            currTo.innerHTML = optionsHTML;
+            
+            // Set defaults to standard pairs
+            currFrom.value = 'USD';
+            currTo.value = 'EUR';
+        })
+        .catch(err => {
+            console.error('Failed to fetch live rates:', err);
+            // Standby map just in case of absolute offline constraint
+            liveRates = { USD: 1, EUR: 0.92, GBP: 0.79, JPY: 151.2, INR: 83.4, AUD: 1.5, CAD: 1.35 };
+        });
+
     currBtn.addEventListener('click', () => {
         const amt = parseFloat(document.getElementById('curr-amount').value);
-        const from = document.getElementById('curr-from').value;
-        const to = document.getElementById('curr-to').value;
+        const from = currFrom.value;
+        const to = currTo.value;
         
         if(isNaN(amt)) return;
         
-        const inUSD = amt / rates[from];
-        const result = inUSD * rates[to];
+        // Convert base to generic USD, then factor to output target
+        const inUSD = amt / liveRates[from];
+        const result = inUSD * liveRates[to];
         
         document.getElementById('curr-result').innerText = result.toFixed(2) + ' ' + to;
     });

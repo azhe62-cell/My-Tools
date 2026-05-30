@@ -3,336 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dashboard - Free online tools for everyone. Premium design and functionality.">
-    <title>Dashboard | My Tools</title>
+    <meta name="description" content="All-in-One Free Online Tools. Home">
+    <title>Home | My Tools</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="sidebar">
-        <div class="logo">
-            <i class="fa-solid fa-gem text-gold filter-drop-shadow"></i>
-            <h2>My Tools</h2>
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-gem text-gold"></i>
+                <h2>My Tools</h2>
+            </a>
+            <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li><li><a href="tools.html" class="nav-link ">Tools</a></li><li><a href="blog.html" class="nav-link ">Blog</a></li><li><a href="about.html" class="nav-link ">About</a></li><li><a href="contact.html" class="nav-link ">Contact</a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li class="nav-btn active cursor-pointer" data-target="dashboard"><i class="fa-solid fa-house"></i> Dashboard</li>
-            <li class="nav-btn cursor-pointer" data-target="qr"><i class="fa-solid fa-qrcode"></i> QR Generator</li>
-            <li class="nav-btn cursor-pointer" data-target="barcode"><i class="fa-solid fa-barcode"></i> Barcode Gen</li>
-            <li class="nav-btn cursor-pointer" data-target="word"><i class="fa-solid fa-spell-check"></i> Word Counter</li>
-            <li class="nav-btn cursor-pointer" data-target="typing"><i class="fa-solid fa-keyboard"></i> Typing Matrix</li>
-            <li class="nav-btn cursor-pointer" data-target="age"><i class="fa-solid fa-calendar-check"></i> Age Analytics</li>
-            <li class="nav-btn cursor-pointer" data-target="currency"><i class="fa-solid fa-comments-dollar"></i> Live Exchange</li>
-            <li class="nav-btn cursor-pointer" data-target="morse"><i class="fa-solid fa-wave-square"></i> Morse Telecom</li>
-        </ul>
-        <div class="ad-placeholder sidebar-ad hover-up" style="margin-top:auto; height:250px; background: rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212, 175, 55, 0.3); color:rgba(255,255,255,0.5); border-radius:12px;">
-            <p><i class="fa-solid fa-rectangle-ad mb-2 d-block text-gold text-center" style="font-size: 2rem;"></i>AdSense Space</p>
-        </div>
-    </nav>
+    </header>
+
+    <!-- Main Content -->
     <main class="main-content">
-        <header class="topbar">
-            <div class="mobile-toggle hover-up"><i class="fa-solid fa-bars"></i></div>
-            <div class="search-bar">
-                <i class="fa-solid fa-search text-gold"></i>
-                <input type="text" placeholder="Search tools or articles...">
-            </div>
-            <div class="user-actions">
-                <button class="btn btn-primary glow-btn shadow-gold" style="padding: 10px 20px;" onclick="showPremiumModal()"><i class="fa-solid fa-crown me-1"></i> Premium</button>
-            </div>
-        </header>
 
-        <!-- Premium Modal -->
-        <div id="premium-modal" class="modal hidden">
-            <div class="modal-content glass-card p-5 slide-up">
-                <span class="close-modal" onclick="hidePremiumModal()">&times;</span>
-                <div class="text-center mb-5">
-                    <h2 class="gradient-text lg-text mb-2">Upgrade to Ultra Premium</h2>
-                    <p class="text-muted">Unlock the full power of the My Tools ecosystem</p>
-                </div>
-                
-                <div class="pricing-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <!-- Free Plan -->
-                    <div class="pricing-card glass-box p-4 text-center hover-up">
-                        <h3 class="mb-3">Standard Node</h3>
-                        <div class="price mb-4"><span class="currency text-gold">$</span><span class="amount lg-text text-gold">0</span><span class="period text-muted">/mo</span></div>
-                        <ul class="plan-features mb-5" style="list-style:none; padding:0; text-align:left;">
-                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> All Basic Tools</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Ad-Supported</li>
-                            <li class="mb-2 text-muted"><i class="fa-solid fa-xmark me-2"></i> Batch Processing</li>
-                            <li class="mb-2 text-muted"><i class="fa-solid fa-xmark me-2"></i> API Access</li>
-                        </ul>
-                        <button class="btn btn-outline w-100" disabled>Active Plan</button>
-                    </div>
+<section class="hero text-center mb-5">
+    <h1 class="gradient-text" style="font-size: 3.8rem; line-height: 1.2; font-weight:800; margin-bottom: 1.5rem;">All-in-One Free Online Tools</h1>
+    <p class="text-muted" style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem;">A complete, professional suite of fast and reliable utilities for digital workflows. No premium subscriptions, no hidden limits. Completely free to use.</p>
+    <a href="tools.html" class="btn btn-primary" style="font-size: 1.25rem; padding: 18px 40px;"><i class="fa-solid fa-toolbox me-2"></i> Explore Tools</a>
+</section>
 
-                    <!-- Premium Plan -->
-                    <div class="pricing-card glass-box p-4 text-center hover-up" style="border: 2px solid var(--gold); background: rgba(212,175,55,0.05);">
-                        <div class="popular-badge" style="background:var(--gold); color:#000; font-size:0.7rem; font-weight:800; padding:4px 12px; border-radius:20px; position:absolute; top:-12px; left:50%; transform:translateX(-50%);">MOST POPULAR</div>
-                        <h3 class="mb-3">Premium Executive</h3>
-                        <div class="price mb-4"><span class="currency text-gold">$</span><span class="amount lg-text text-gold">9.99</span><span class="period text-muted">/mo</span></div>
-                        <ul class="plan-features mb-5" style="list-style:none; padding:0; text-align:left;">
-                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Zero Advertisements</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Priority Support</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Batch Processing</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-gold me-2"></i> Premium API Access</li>
-                        </ul>
-                        <button class="btn btn-primary w-100 glow-btn" id="premium-enable-btn" onclick="initiatePayment('Premium Executive', 9.99)">Enable Premium</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="mt-5">
+    <div class="text-center mb-4">
+        <h2 class="text-gold" style="font-size: 2.2rem;">Featured Utilities</h2>
+        <p class="text-muted">Instant processing running securely from your browser.</p>
+    </div>
+    <div class="tools-grid">
+        <a href="tools.html#qr" class="tool-card glass-card">
+            <i class="fa-solid fa-qrcode text-gold fa-4x mb-4 filter-drop-shadow"></i>
+            <h3 style="font-size:1.4rem;" class="mb-2">QR Generator</h3>
+            <p class="text-muted mt-2">Create highly scannable QR matrices instantly.</p>
+        </a>
+        <a href="tools.html#word" class="tool-card glass-card">
+            <i class="fa-solid fa-spell-check text-gold fa-4x mb-4 filter-drop-shadow"></i>
+            <h3 style="font-size:1.4rem;" class="mb-2">Word Counter</h3>
+            <p class="text-muted mt-2">Track real-time character & spacing constraints.</p>
+        </a>
+        <a href="tools.html#currency" class="tool-card glass-card">
+            <i class="fa-solid fa-comments-dollar text-gold fa-4x mb-4 filter-drop-shadow"></i>
+            <h3 style="font-size:1.4rem;" class="mb-2">Global Exchange</h3>
+            <p class="text-muted mt-2">Compute exact modern exchange rates globally.</p>
+        </a>
+    </div>
+</section>
 
-        <div class="content-wrapper">
-
-            <!-- Hero Section -->
-            <div id="dashboard" class="tool-section active-section">
-            <section class="hero text-center slide-up mb-5 glass-card" style="padding: 5rem 2rem; border-radius: 20px; background: radial-gradient(circle at top, rgba(212,175,55,0.05) 0%, rgba(10,10,10,0.8) 100%);">
-                <h1 class="gradient-text" style="font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 2rem; letter-spacing: -1px;">Next-Gen Online Tools<br>Fast, Simple & Powerful</h1>
-                <p class="text-muted mb-5" style="font-size: 1.3rem; max-width: 650px; margin: 0 auto 2.5rem; line-height: 1.6;">Generate QR codes, execute heavy calculations, and boost productivity with our premium suite of responsive utilities.</p>
-                <div style="display:flex; justify-content:center; gap: 20px; flex-wrap:wrap;">
-                    <a href="#tools" class="btn btn-primary lg-btn glow-btn shadow-gold" style="font-size: 1.2rem; padding: 16px 36px;"><i class="fa-solid fa-bolt me-2"></i> Start Exploring</a>
-                    <a href="blog.html" class="btn btn-outline lg-btn hover-up" style="font-size: 1.2rem; padding: 16px 36px;">Read Guides</a>
-                </div>
-            </section>
-
-            <div class="ad-placeholder banner-ad my-5 hover-up" style="height:100px; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; border:1px dashed rgba(212,175,55,0.2); color:#666; border-radius:12px;">
-                <p>Premium Sponsorship Banner</p>
-            </div>
-
-            <!-- Tools Sections -->
-            <section id="tools" class="tools-section mt-5 fade-in scroll-mt-px">
-                <div class="section-header text-center mb-5">
-                    <h2 class="gradient-text lg-text" style="font-size: 3rem;">Our Premium Collection</h2>
-                    <p class="text-muted mt-2" style="font-size: 1.1rem;">Select a master tool below to begin instantly</p>
-                </div>
-
-                <div class="tools-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'qr\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-qrcode text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">QR Generator</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Create highly customizable QR codes with unlimited capacity instantly.</p>
-                    </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'barcode\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-barcode text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">Barcode Gen</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Generate universal standard barcodes for retail and inventory easily.</p>
-                    </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'word\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-spell-check text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">Word Counter</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Count words, characters, and sentences with robust real-time metrics.</p>
-                    </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'typing\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-keyboard text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">Typing Matrix</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Check your WPM, error threshold, and accuracy speed dynamically.</p>
-                    </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'age\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-calendar-check text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">Age Analytics</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Calculate complex age metrics down to exact days from any DOB.</p>
-                    </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'currency\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-comments-dollar text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">Live Exchange</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Instant global exchange rate conversion for 80+ top currencies.</p>
-                    </div>
-                    <div class="tool-card glass-card p-5 text-center cursor-pointer hover-up" onclick="document.querySelector('.nav-links li[data-target=\'morse\']').click()">
-                        <div class="icon-wrap mb-4"><i class="fa-solid fa-wave-square text-gold fa-3x filter-drop-shadow"></i></div>
-                        <h3 class="mb-3" style="font-size: 1.4rem;">Morse Telecom</h3>
-                        <p class="text-muted text-sm" style="line-height: 1.5;">Translate raw text arrays into morse code & vice versa securely.</p>
-                    </div>
-                </div>
-            </section>
-            </div>
-
-            <!-- Tool Container (Hidden by default, shown when tool is clicked) -->
-            <!-- Tools Content Containers -->
-                
-                <!-- QR Code Tool -->
-                <div id="qr" class="tool-section tool-interface glass-card p-5 slide-up">
-                    <h2 class="gradient-text mb-5 lg-text text-center">Premium QR Generator</h2>
-                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                        <div class="tool-input flex-col">
-                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Enter Raw Text or Valid URL</label>
-                            <input type="text" id="qr-input" class="modern-input mb-4" placeholder="https://example.com" style="padding: 16px;">
-                            <button id="qr-btn" class="btn btn-primary w-100 shadow-gold hover-up mb-2" style="padding: 16px; font-size:1.1rem; transition: all 0.3s ease;"><i class="fa-solid fa-wand-magic-sparkles me-2"></i> Generate QR Code</button>
-                            <button id="qr-download-btn" class="btn w-100 mt-2 shadow-gold hover-up" style="padding: 16px; font-size:1.1rem; display:none; background: transparent; border: 1px solid #d4af37; color: #d4af37; transition: opacity 0.4s ease, transform 0.3s ease;"><i class="fa-solid fa-download me-2"></i> Download PNG</button>
-                            <div id="qr-success-msg" class="mt-3 text-center" style="display:none; color:#4ade80; font-size:0.95rem; opacity:0; transition: opacity 0.4s ease;"><i class="fa-solid fa-check-circle me-1"></i> Generated Successfully!</div>
-                        </div>
-                        <div class="tool-output">
-                            <div id="qrcode-canvas" class="output-box glass-box flex-center filter-drop-shadow" style="min-height: 300px; padding: 1.5rem; background:rgba(255,255,255,1); border-radius:16px;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Barcode Tool -->
-                <div id="barcode" class="tool-section tool-interface glass-card p-5 slide-up">
-                    <h2 class="gradient-text mb-5 lg-text text-center">Barcode Studio</h2>
-                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                        <div class="tool-input flex-col">
-                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Scan Data / Serial Value</label>
-                            <input type="text" id="barcode-input" class="modern-input mb-4" placeholder="Ex: 84392011" style="padding: 16px;">
-                            <button id="barcode-btn" class="btn btn-primary w-100 shadow-gold hover-up mb-2" style="padding: 16px; font-size:1.1rem; transition: all 0.3s ease;"><i class="fa-solid fa-barcode me-2"></i> Render Barcode</button>
-                            <button id="barcode-download-btn" class="btn w-100 mt-2 shadow-gold hover-up" style="padding: 16px; font-size:1.1rem; display:none; background: transparent; border: 1px solid #d4af37; color: #d4af37; transition: opacity 0.4s ease, transform 0.3s ease;"><i class="fa-solid fa-download me-2"></i> Download PNG</button>
-                            <div id="barcode-success-msg" class="mt-3 text-center" style="display:none; color:#4ade80; font-size:0.95rem; opacity:0; transition: opacity 0.4s ease;"><i class="fa-solid fa-check-circle me-1"></i> Generated Successfully!</div>
-                        </div>
-                        <div class="tool-output glass-box flex-center filter-drop-shadow" style="min-height: 300px; background:rgba(255,255,255,1); border-radius:16px; overflow:hidden;">
-                            <svg id="barcode-canvas" style="max-width:100%; height:auto; padding:1.5rem;"></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Word Counter -->
-                <div id="word" class="tool-section tool-interface glass-card p-5 slide-up">
-                    <h2 class="gradient-text mb-5 lg-text text-center">Live Text Insights</h2>
-                    <div class="tool-layout-vertical flex-col">
-                        <textarea id="word-input" class="modern-input custom-scrollbar" style="min-height: 300px; resize: vertical; padding: 20px; font-size: 1.1rem; line-height:1.6;" placeholder="Type, paste or inject your premium content here to begin analysis..."></textarea>
-                        <div class="stats-grid mt-5" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
-                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background: rgba(0,0,0,0.3);">
-                                <span class="stat-num text-gold gradient-text" style="font-size:3.5rem; font-weight:800;" id="word-count">0</span>
-                                <span class="stat-label text-muted d-block mt-3" style="font-size:1.1rem; font-weight:500;">Total Words</span>
-                            </div>
-                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background: rgba(0,0,0,0.3);">
-                                <span class="stat-num text-gold gradient-text" style="font-size:3.5rem; font-weight:800;" id="char-count">0</span>
-                                <span class="stat-label text-muted d-block mt-3" style="font-size:1.1rem; font-weight:500;">Total Characters</span>
-                            </div>
-                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background: rgba(0,0,0,0.3);">
-                                <span class="stat-num text-gold gradient-text" style="font-size:3.5rem; font-weight:800;" id="char-no-space">0</span>
-                                <span class="stat-label text-muted d-block mt-3" style="font-size:1.1rem; font-weight:500;">Without Spaces</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Typing Test -->
-                <div id="typing" class="tool-section tool-interface glass-card p-5 slide-up mt-3">
-                    <div class="text-center mb-5">
-                        <h2 class="gradient-text lg-text mb-2">Reflex Typing Matrix</h2>
-                        <p class="text-muted text-sm">Measure your cognitive and physical keystroke velocity.</p>
-                    </div>
-                    <div class="typing-container flex-col">
-                        <div class="typing-stats stats-grid mb-5" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
-                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.2);">
-                                <span class="stat-label text-muted d-block mb-2">Timer Left</span>
-                                <span class="stat-num text-gold" style="font-size:2.8rem; font-weight:800;" id="time-display">60s</span>
-                            </div>
-                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.2);">
-                                <span class="stat-label text-muted d-block mb-2">Net WPM</span>
-                                <span class="stat-num text-gold" style="font-size:2.8rem; font-weight:800;" id="wpm-display">0</span>
-                            </div>
-                            <div class="stat-box glass-box p-4 text-center br-12 hover-up" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.2);">
-                                <span class="stat-label text-muted d-block mb-2">Precision</span>
-                                <span class="stat-num text-gold" style="font-size:2.8rem; font-weight:800;" id="acc-display">100%</span>
-                            </div>
-                        </div>
-                        <div class="difficulty-select mb-4 text-center" style="display:flex; justify-content:center; gap: 15px;">
-                            <button class="btn btn-outline diff-btn active" data-diff="easy" style="padding:10px 25px;">Level: Alpha</button>
-                            <button class="btn btn-outline diff-btn" data-diff="medium" style="padding:10px 25px;">Level: Beta</button>
-                            <button class="btn btn-outline diff-btn" data-diff="hard" style="padding:10px 25px;">Level: Sigma</button>
-                        </div>
-                        <div class="glass-box p-5 text-box mb-4 br-12" style="font-size: 1.4rem; line-height: 1.8; color: #ddd; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); text-align:center;">
-                            <p id="quote-display" class="quote-text m-0" style="font-weight:300;">Initiate sequence to display matrix target string...</p>
-                        </div>
-                        <textarea id="typing-input" class="modern-input custom-scrollbar" style="min-height:120px; font-size:1.2rem; padding: 20px;" placeholder="Awaiting initialization..." disabled></textarea>
-                        <button id="start-typing-btn" class="btn btn-primary mt-4 w-100 shadow-gold glow-btn" style="padding: 18px; font-size: 1.2rem; font-weight:700;"><i class="fa-solid fa-power-off me-2"></i> Initialize Test</button>
-                    </div>
-                </div>
-
-                <!-- Age Calculator -->
-                <div id="age" class="tool-section tool-interface glass-card p-5 slide-up">
-                    <h2 class="gradient-text mb-5 lg-text text-center">Chronology Engine</h2>
-                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                        <div class="tool-input flex-col">
-                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Origin Date</label>
-                            <input type="date" id="dob-input" class="modern-input mb-4" style="padding: 16px;">
-                            <button id="age-btn" class="btn btn-primary w-100 shadow-gold hover-up" style="padding: 16px; font-size:1.1rem;"><i class="fa-solid fa-calculator me-2"></i> Compute Matrix</button>
-                        </div>
-                        <div class="tool-output h-100">
-                            <div class="glass-box text-center flex-col filter-drop-shadow" style="padding: 4rem 2rem; align-items:center; justify-content:center; height:100%; border-radius:16px; background:rgba(0,0,0,0.4);">
-                                <h3 id="age-result" class="text-gold gradient-text mb-3" style="font-size: 4rem; font-weight:800; line-height:1;">--</h3>
-                                <p id="age-details" class="text-muted" style="font-size:1.2rem;">Years, Months, Days</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Currency -->
-                <div id="currency" class="tool-section tool-interface glass-card p-5 slide-up">
-                    <h2 class="gradient-text mb-5 lg-text text-center">Global Exchange Terminal</h2>
-                    <div class="tool-layout grid-2-col" style="display:grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                        <div class="tool-input flex-col">
-                            <label class="mb-3 text-gold d-block" style="font-weight: 600; font-size:1.1rem;">Target Value</label>
-                            <input type="number" id="curr-amount" class="modern-input mb-4" value="100" min="0" step="any" style="padding: 16px; font-size:1.2rem;">
-                            
-                            <div class="flex-row mb-4" style="display:flex; gap:20px;">
-                                <div style="flex:1;">
-                                    <label class="mb-2 text-muted d-block font-weight-bold">Base</label>
-                                    <select id="curr-from" class="modern-input custom-select" style="padding: 14px;">
-                                        <option value="USD">USD ($) - US Dollar</option>
-                                        <option value="EUR">EUR (€) - Euro</option>
-                                        <option value="GBP">GBP (£) - British Pound</option>
-                                        <option value="JPY">JPY (¥) - Japanese Yen</option>
-                                        <option value="INR">INR (₹) - Indian Rupee</option>
-                                        <option value="AUD">AUD ($) - Australian Dollar</option>
-                                        <option value="CAD">CAD ($) - Canadian Dollar</option>
-                                    </select>
-                                </div>
-                                <div style="flex:1;">
-                                    <label class="mb-2 text-muted d-block font-weight-bold">Convert To</label>
-                                    <select id="curr-to" class="modern-input custom-select" style="padding: 14px;">
-                                        <option value="EUR" selected>EUR (€) - Euro</option>
-                                        <option value="USD">USD ($) - US Dollar</option>
-                                        <option value="GBP">GBP (£) - British Pound</option>
-                                        <option value="JPY">JPY (¥) - Japanese Yen</option>
-                                        <option value="INR">INR (₹) - Indian Rupee</option>
-                                        <option value="AUD">AUD ($) - Australian Dollar</option>
-                                        <option value="CAD">CAD ($) - Canadian Dollar</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button id="curr-btn" class="btn btn-primary w-100 shadow-gold hover-up mt-2" style="padding: 16px; font-size:1.1rem;"><i class="fa-solid fa-rotate me-2"></i> Process Conversion</button>
-                        </div>
-                        <div class="tool-output h-100">
-                            <div class="glass-box text-center flex-col filter-drop-shadow" style="padding: 4rem 2rem; align-items:center; justify-content:center; height:100%; border-radius:16px; background:rgba(0,0,0,0.4);">
-                                <p class="stat-label text-muted mb-3" style="font-size:1.1rem; text-transform:uppercase; letter-spacing:1px;">Net Result Value</p>
-                                <h3 id="curr-result" class="text-gold gradient-text" style="font-size: 3.5rem; font-weight:800;">---</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Morse Code -->
-                <div id="morse" class="tool-section tool-interface glass-card p-5 slide-up">
-                    <h2 class="gradient-text mb-5 lg-text text-center">Cipher & Telecom Converter</h2>
-                    <div class="tool-layout-vertical flex-col max-w-800 mx-auto" style="max-width: 900px; margin:0 auto;">
-                        <textarea id="morse-input" class="modern-input mb-4 custom-scrollbar" style="min-height: 180px; resize:vertical; padding: 20px; font-size:1.2rem; line-height:1.6;" placeholder="Inject text cipher array, or morse patterns separated by space..."></textarea>
-                        
-                        <div class="flex-row mb-5" style="display:flex; gap:20px;">
-                            <button id="to-morse-btn" class="btn btn-primary flex-1 shadow-gold hover-up" style="padding:16px; font-size:1.1rem;"><i class="fa-solid fa-lock me-2"></i> Encode to Morse</button>
-                            <button id="to-text-btn" class="btn btn-outline flex-1 hover-up" style="padding:16px; font-size:1.1rem;"><i class="fa-solid fa-unlock me-2"></i> Decode to Text</button>
-                        </div>
-                        
-                        <div class="glass-box p-5 text-gold break-words flex-center filter-drop-shadow" id="morse-output" style="min-height:200px; font-size:2rem; font-weight:600; letter-spacing:4px; background:rgba(0,0,0,0.6); border: 1px solid rgba(212,175,55,0.3); border-radius:16px; color:#f3e5ab; text-align:center;">
-                            Awaiting Signal...
-                        </div>
-                    </div>
-                </div>
-                </div>
-        <footer>
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact Us</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-                <p style="color: #666; margin-top: 10px;">&copy; 2026 My Tools. Premium SaaS Dashboard Concept.</p>
-            </div>
-        </footer>
     </main>
-    <!-- Tool Libraries -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <p class="copyright">&copy; 2026 My Tools. Free, Fast & Reliable Utilities.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="assets/js/main.js"></script>
