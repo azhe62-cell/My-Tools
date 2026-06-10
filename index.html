@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="All-in-One Free Online Tools. Home">
-    <title>Home | My Tools</title>
-    <!-- Fonts -->
+    <title>Home | Toolmetri</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Top Navigation -->
     <header class="top-nav">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -21,47 +18,121 @@
             </a>
             <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li><li><a href="tools.html" class="nav-link ">Tools</a></li><li><a href="blog.html" class="nav-link ">Blog</a></li><li><a href="about.html" class="nav-link ">About</a></li><li><a href="contact.html" class="nav-link ">Contact</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="tools.html" class="nav-link">Tools</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
 
-<section class="hero text-center mb-5">
-    <h1 class="gradient-text" style="font-size: 3.8rem; line-height: 1.2; font-weight:800; margin-bottom: 1.5rem;">All-in-One Free Online Tools</h1>
-    <p class="text-muted" style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem;">A complete, professional suite of fast and reliable utilities for digital workflows. No premium subscriptions, no hidden limits. Completely free to use.</p>
-    <a href="tools.html" class="btn btn-primary" style="font-size: 1.25rem; padding: 18px 40px;"><i class="fa-solid fa-toolbox me-2"></i> Explore Tools</a>
-</section>
+        <!-- Hero -->
+        <section class="hero text-center mb-5">
+            <h1 class="gradient-text" style="font-size:3.8rem;line-height:1.2;font-weight:800;margin-bottom:1.5rem;">All-in-One Free Online Tools</h1>
+            <p class="text-muted" style="font-size:1.25rem;max-width:700px;margin:0 auto 2.5rem;">A complete, professional suite of fast and reliable utilities for digital workflows. No premium subscriptions, no hidden limits. Completely free to use.</p>
+            <a href="tools.html" class="btn btn-primary" style="font-size:1.25rem;padding:18px 40px;"><i class="fa-solid fa-toolbox me-2"></i> Explore Tools</a>
+        </section>
 
-<section class="mt-5">
-    <div class="text-center mb-4">
-        <h2 class="text-gold" style="font-size: 2.2rem;">Featured Utilities</h2>
-        <p class="text-muted">Instant processing running securely from your browser.</p>
-    </div>
-    <div class="tools-grid">
-        <a href="tools.html#qr" class="tool-card glass-card">
-            <i class="fa-solid fa-qrcode text-gold fa-4x mb-4 filter-drop-shadow"></i>
-            <h3 style="font-size:1.4rem;" class="mb-2">QR Generator</h3>
-            <p class="text-muted mt-2">Create highly scannable QR matrices instantly.</p>
-        </a>
-        <a href="tools.html#word" class="tool-card glass-card">
-            <i class="fa-solid fa-spell-check text-gold fa-4x mb-4 filter-drop-shadow"></i>
-            <h3 style="font-size:1.4rem;" class="mb-2">Word Counter</h3>
-            <p class="text-muted mt-2">Track real-time character & spacing constraints.</p>
-        </a>
-        <a href="tools.html#currency" class="tool-card glass-card">
-            <i class="fa-solid fa-comments-dollar text-gold fa-4x mb-4 filter-drop-shadow"></i>
-            <h3 style="font-size:1.4rem;" class="mb-2">Global Exchange</h3>
-            <p class="text-muted mt-2">Compute exact modern exchange rates globally.</p>
-        </a>
-    </div>
-</section>
+        <!-- All Tools Grid -->
+        <section class="mt-5">
+            <div class="text-center mb-4">
+                <h2 class="text-gold" style="font-size:2.2rem;">All Utilities</h2>
+                <p class="text-muted">14 free tools running securely in your browser. No signup required.</p>
+            </div>
+            <div class="tools-grid">
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','qr')" class="tool-card glass-card">
+                    <i class="fa-solid fa-qrcode text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">QR Generator</h3>
+                    <p class="text-muted mt-2">Create scannable QR codes for URLs, text & more.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','barcode')" class="tool-card glass-card">
+                    <i class="fa-solid fa-barcode text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Barcode Studio</h3>
+                    <p class="text-muted mt-2">Generate CODE128 barcodes for any text or number.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','password')" class="tool-card glass-card">
+                    <i class="fa-solid fa-key text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Password Generator</h3>
+                    <p class="text-muted mt-2">Generate strong, secure passwords instantly.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','case')" class="tool-card glass-card">
+                    <i class="fa-solid fa-font text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Case Converter</h3>
+                    <p class="text-muted mt-2">Convert text to UPPER, lower, Title or Sentence case.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','bmi')" class="tool-card glass-card">
+                    <i class="fa-solid fa-weight-scale text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">BMI Calculator</h3>
+                    <p class="text-muted mt-2">Calculate your Body Mass Index in seconds.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','unit')" class="tool-card glass-card">
+                    <i class="fa-solid fa-arrows-rotate text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Unit Converter</h3>
+                    <p class="text-muted mt-2">Convert length, weight, temperature, speed & more.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','color')" class="tool-card glass-card">
+                    <i class="fa-solid fa-palette text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Color Picker</h3>
+                    <p class="text-muted mt-2">Pick colors and get HEX, RGB & HSL values.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','lorem')" class="tool-card glass-card">
+                    <i class="fa-solid fa-align-left text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Lorem Ipsum</h3>
+                    <p class="text-muted mt-2">Generate placeholder text for designs & layouts.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','imgresizer')" class="tool-card glass-card">
+                    <i class="fa-solid fa-crop text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Image Resizer</h3>
+                    <p class="text-muted mt-2">Resize images to any dimension, right in browser.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','word')" class="tool-card glass-card">
+                    <i class="fa-solid fa-spell-check text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Word Counter</h3>
+                    <p class="text-muted mt-2">Count words, characters & spaces in real time.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','typing')" class="tool-card glass-card">
+                    <i class="fa-solid fa-keyboard text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Typing Speed</h3>
+                    <p class="text-muted mt-2">Test your WPM and accuracy with live feedback.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','age')" class="tool-card glass-card">
+                    <i class="fa-solid fa-calendar text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Age Calculator</h3>
+                    <p class="text-muted mt-2">Calculate exact age in years, months and days.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','currency')" class="tool-card glass-card">
+                    <i class="fa-solid fa-coins text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Currency Rates</h3>
+                    <p class="text-muted mt-2">Live exchange rates for 160+ world currencies.</p>
+                </a>
+
+                <a href="tools.html" onclick="sessionStorage.setItem('openTool','morse')" class="tool-card glass-card">
+                    <i class="fa-solid fa-wave-square text-gold fa-4x mb-4 filter-drop-shadow"></i>
+                    <h3 style="font-size:1.3rem;" class="mb-2">Morse Cipher</h3>
+                    <p class="text-muted mt-2">Encode and decode Morse code instantly.</p>
+                </a>
+
+            </div>
+        </section>
 
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-links">
@@ -73,10 +144,15 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/tools.js"></script>
+
+    <!-- Auto-open tool if coming from homepage card click -->
+    <script>
+        const toolToOpen = sessionStorage.getItem('openTool');
+        if (toolToOpen) {
+            sessionStorage.removeItem('openTool');
+            if (typeof openTool === 'function') openTool(toolToOpen);
+        }
+    </script>
 </body>
 </html>
