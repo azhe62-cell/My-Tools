@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how HEX, RGB, and HSL color formats work in web design, and how to use a free color picker tool to find and convert colors for your projects.">
+    <meta name="keywords" content="color picker tool, HEX RGB HSL explained, web design colors, color converter free">
+    <meta property="og:title" content="How to Use a Color Picker for Web Design | Toolmetri">
+    <meta property="og:description" content="Learn HEX, RGB and HSL color formats and how to use a free color picker for your designs.">
+    <meta property="og:url" content="https://toolmetri.com/blog/how-to-use-a-color-picker-for-web-design.html">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://toolmetri.com/blog/how-to-use-a-color-picker-for-web-design.html">
+    <title>How to Use a Color Picker for Web Design | Toolmetri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo"><i class="fa-solid fa-gem text-gold"></i><h2>Toolmetri</h2></a>
+            <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../tools.html" class="nav-link">Tools</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="main-content">
+        <article class="blog-post slide-up" style="max-width:900px;margin:3rem auto;">
+            <h1 class="gradient-text lg-text" style="font-size:2.8rem;line-height:1.2;">How to Use a Color Picker for Web Design</h1>
+            <div class="post-meta mt-3 mb-4 text-muted" style="font-size:1.1rem;">
+                <span class="me-4"><i class="fa-regular fa-calendar text-gold"></i> June 12, 2026</span>
+                <span><i class="fa-regular fa-clock text-gold"></i> 6 min read</span>
+            </div>
+            <div class="post-content glass-card" style="padding:3.5rem;">
+                <p class="mb-4" style="font-size:1.25rem;line-height:1.6;color:#fff;">Color is one of the most important elements of design, but the way computers represent color can be confusing for beginners. HEX codes, RGB values, and HSL — what do they all mean, and why do designers need to convert between them? This guide breaks it down.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">HEX Color Codes</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">HEX (hexadecimal) is the most common color format in web design. It looks like a hash symbol followed by six characters, such as #D4AF37 — a gold color. Each pair of characters represents the intensity of red, green, and blue respectively, using hexadecimal numbers (0-9 and A-F).</p>
+                <p class="mb-4 text_muted" style="font-size:1.1rem;line-height:1.8;">Hexadecimal values range from 00 (no intensity) to FF (full intensity, 255 in decimal). So #FF0000 is pure red (full red, no green, no blue), #00FF00 is pure green, and #000000 is black (no color at all), while #FFFFFF is white (full intensity of all three).</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">HEX codes are compact and widely supported in CSS, making them the default choice for most web developers.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">RGB Color Values</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">RGB stands for Red, Green, Blue — the three primary colors of light that combine to create every color on a screen. RGB values are written as three numbers from 0 to 255, like rgb(212, 175, 55) for the same gold color shown above.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">RGB and HEX represent exactly the same information, just in different formats. RGB is more intuitive for understanding color mixing — for example, equal high values of red and green with low blue creates yellow, which is why rgb(255, 255, 0) is pure yellow.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">RGBA extends RGB with a fourth value for alpha (transparency), ranging from 0 (fully transparent) to 1 (fully opaque) — useful for overlays and semi-transparent elements.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">HSL Color Values</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">HSL stands for Hue, Saturation, and Lightness — a format designed to be more intuitive for humans to work with. Instead of thinking in terms of red/green/blue mixing, HSL lets you think in terms of the actual color wheel:</p>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>Hue (0-360°)</strong> — The actual color, represented as a position on the color wheel. 0° is red, 120° is green, 240° is blue, and it wraps back to red at 360°.</li>
+                    <li><strong>Saturation (0-100%)</strong> — How vivid or muted the color is. 0% is gray (no color), 100% is the most vivid version of that hue.</li>
+                    <li><strong>Lightness (0-100%)</strong> — How light or dark the color is. 0% is black, 100% is white, 50% is the "pure" version of the hue.</li>
+                </ul>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">HSL is particularly useful when you want to create variations of a color — for example, lightening or darkening a brand color for hover states is as simple as adjusting the lightness value, without needing to recalculate RGB values from scratch.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Why Designers Need to Convert Between Formats</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>Design handoff</strong> — A designer might specify colors in HEX from a design tool, but a developer needs RGB or HSL for specific CSS effects</li>
+                    <li><strong>Creating color variations</strong> — Converting to HSL makes it easy to create lighter/darker shades systematically</li>
+                    <li><strong>Transparency effects</strong> — RGBA is needed for any element requiring partial transparency</li>
+                    <li><strong>Matching brand guidelines</strong> — Brand colors are often specified in one format but need conversion for different platforms (web, print, app icons)</li>
+                    <li><strong>Accessibility checks</strong> — Some contrast-checking tools require specific formats to calculate readability scores</li>
+                </ul>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Tips for Choosing Web Colors</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>Limit your palette</strong> — Most successful designs use 2-4 main colors plus neutrals (white, black, grays)</li>
+                    <li><strong>Check contrast for accessibility</strong> — Text needs sufficient contrast against its background to be readable for people with visual impairments</li>
+                    <li><strong>Use HSL for consistent variations</strong> — Keep the same hue and saturation but vary lightness for hover states, borders, and backgrounds within the same color family</li>
+                    <li><strong>Consider color psychology</strong> — Different colors evoke different emotions and associations; this matters for branding decisions</li>
+                </ul>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">How to Use Toolmetri's Color Picker</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li>Click the color wheel to open your browser's native color picker</li>
+                    <li>Select any color visually, or input precise values</li>
+                    <li>Instantly see the HEX, RGB, and HSL values for your chosen color, all at once</li>
+                    <li>Copy the HEX code directly for use in your CSS or design tool</li>
+                </ul>
+
+                <div class="mt-5 p-5 text-center glass-card" style="background:rgba(212,175,55,0.04);border:1px solid rgba(212,175,55,0.25);">
+                    <h3 class="mb-3 gradient-text" style="font-size:2rem;">Pick and convert colors instantly</h3>
+                    <p class="mb-4 text-muted" style="font-size:1.2rem;">Free, visual, get HEX, RGB and HSL at once.</p>
+                    <a href="../tools.html" class="btn btn-primary lg-btn"><i class="fa-solid fa-palette me-2"></i> Open Color Picker</a>
+                </div>
+            </div>
+        </article>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            <p class="copyright">&copy; 2026 Toolmetri. Free, Fast & Reliable Utilities.</p>
+        </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

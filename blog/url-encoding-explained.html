@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn what URL encoding is, why special characters in URLs need to be encoded, and how to encode or decode URLs for free online.">
+    <meta name="keywords" content="URL encoding, what is URL encoding, percent encoding, encode decode URL online, URI encoding">
+    <meta property="og:title" content="What is URL Encoding and Why Does It Matter? | Toolmetri">
+    <meta property="og:description" content="Learn how URL encoding works and how to encode or decode URLs for free.">
+    <meta property="og:url" content="https://toolmetri.com/blog/url-encoding-explained.html">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://toolmetri.com/blog/url-encoding-explained.html">
+    <title>What is URL Encoding and Why Does It Matter? | Toolmetri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo"><i class="fa-solid fa-gem text-gold"></i><h2>Toolmetri</h2></a>
+            <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../tools.html" class="nav-link">Tools</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="main-content">
+        <article class="blog-post slide-up" style="max-width:900px;margin:3rem auto;">
+            <h1 class="gradient-text lg-text" style="font-size:2.8rem;line-height:1.2;">What is URL Encoding and Why Does It Matter?</h1>
+            <div class="post-meta mt-3 mb-4 text-muted" style="font-size:1.1rem;">
+                <span class="me-4"><i class="fa-regular fa-calendar text-gold"></i> June 12, 2026</span>
+                <span><i class="fa-regular fa-clock text-gold"></i> 6 min read</span>
+            </div>
+            <div class="post-content glass-card" style="padding:3.5rem;">
+                <p class="mb-4" style="font-size:1.25rem;line-height:1.6;color:#fff;">Have you ever copied a URL and noticed strange characters like %20 or %3F scattered throughout it? That's URL encoding at work. It's a small but essential part of how the web functions, and understanding it helps you debug broken links and build better web applications.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">What is URL Encoding?</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">URL encoding, also called <strong>percent encoding</strong>, is a method of representing characters in a URL that would otherwise be unsafe or have special meaning. URLs can only contain a limited set of characters from the ASCII character set — letters, digits, and a small number of symbols.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Any character outside this safe set — including spaces, non-English characters, and certain symbols — must be converted into a format using a percent sign (%) followed by two hexadecimal digits representing the character's byte value.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Why Do URLs Need Encoding?</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">URLs serve as both an addressing system and a way to pass data (through query parameters). Several characters have special, reserved meanings within this structure:</p>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>? (question mark)</strong> — Marks the beginning of query parameters</li>
+                    <li><strong>& (ampersand)</strong> — Separates multiple query parameters</li>
+                    <li><strong>= (equals sign)</strong> — Separates a parameter name from its value</li>
+                    <li><strong># (hash)</strong> — Marks the start of a fragment identifier</li>
+                    <li><strong>/ (slash)</strong> — Separates path segments</li>
+                    <li><strong>space</strong> — Not allowed in URLs at all; must be encoded as %20 or +</li>
+                </ul>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">If you wanted to search for the phrase "coffee & cake" on a search engine, the ampersand in your search term could be misread as a parameter separator, breaking the URL. Encoding it as %26 ensures the browser and server understand it as part of your search text, not as URL syntax.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Common Encoded Characters</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>Space</strong> → %20</li>
+                    <li><strong>!</strong> → %21</li>
+                    <li><strong>#</strong> → %23</li>
+                    <li><strong>$</strong> → %24</li>
+                    <li><strong>&</strong> → %26</li>
+                    <li><strong>+</strong> → %2B</li>
+                    <li><strong>,</strong> → %2C</li>
+                    <li><strong>/</strong> → %2F</li>
+                    <li><strong>:</strong> → %3A</li>
+                    <li><strong>?</strong> → %3F</li>
+                    <li><strong>@</strong> → %40</li>
+                </ul>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Non-English Characters and URL Encoding</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">URL encoding isn't just for symbols — it's essential for non-ASCII characters too. Letters from non-English alphabets (such as Arabic, Chinese, or Cyrillic scripts), emojis, and accented characters all need to be encoded into their UTF-8 byte representation and then percent-encoded.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">This is why URLs containing non-English text often look like a long string of percent signs and hex digits when copied from certain browsers, even though the browser displays them in readable form in the address bar.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Common Problems Caused by Missing or Incorrect Encoding</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>Broken links</strong> — Spaces or special characters in a URL can cause it to be cut off or misread</li>
+                    <li><strong>Lost query parameters</strong> — An unencoded "&" in a value can be mistaken for a parameter separator, truncating the data</li>
+                    <li><strong>Double encoding</strong> — Encoding an already-encoded URL turns "%20" into "%2520", causing further errors</li>
+                    <li><strong>Form submission errors</strong> — Special characters in form input that aren't properly encoded can break the request</li>
+                </ul>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">When Developers Need URL Encoding Tools</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">URL encoding/decoding tools are useful when debugging API requests with complex query parameters, constructing URLs that contain user input, decoding tracking links to see their actual destination, or troubleshooting "404 Not Found" errors caused by encoding mismatches.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">How to Use Toolmetri's URL Encoder/Decoder</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li>Paste your URL or text into the input box</li>
+                    <li>Click <strong>Encode URL</strong> to convert special characters to their percent-encoded form</li>
+                    <li>Click <strong>Decode URL</strong> to convert percent-encoded text back to readable form</li>
+                    <li>Copy the result with one click</li>
+                </ul>
+
+                <div class="mt-5 p-5 text-center glass-card" style="background:rgba(212,175,55,0.04);border:1px solid rgba(212,175,55,0.25);">
+                    <h3 class="mb-3 gradient-text" style="font-size:2rem;">Encode or decode any URL instantly</h3>
+                    <p class="mb-4 text-muted" style="font-size:1.2rem;">Free, instant, runs entirely in your browser.</p>
+                    <a href="../tools.html" class="btn btn-primary lg-btn"><i class="fa-solid fa-link me-2"></i> Open URL Encoder</a>
+                </div>
+            </div>
+        </article>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            <p class="copyright">&copy; 2026 Toolmetri. Free, Fast & Reliable Utilities.</p>
+        </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
