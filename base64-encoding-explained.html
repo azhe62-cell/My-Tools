@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What is Base64 encoding and why is it used? Learn how Base64 works, common use cases, and how to encode or decode Base64 strings for free online.">
+    <meta name="keywords" content="what is Base64, Base64 encoding explained, Base64 decoder, encode decode Base64 online">
+    <meta property="og:title" content="Base64 Encoding Explained: What It Is and How to Use It | Toolmetri">
+    <meta property="og:description" content="Learn how Base64 encoding works and how to encode or decode it for free.">
+    <meta property="og:url" content="https://toolmetri.com/blog/base64-encoding-explained.html">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://toolmetri.com/blog/base64-encoding-explained.html">
+    <title>Base64 Encoding Explained: What It Is and How to Use It | Toolmetri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo"><i class="fa-solid fa-gem text-gold"></i><h2>Toolmetri</h2></a>
+            <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../tools.html" class="nav-link">Tools</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="main-content">
+        <article class="blog-post slide-up" style="max-width:900px;margin:3rem auto;">
+            <h1 class="gradient-text lg-text" style="font-size:2.8rem;line-height:1.2;">Base64 Encoding Explained: What It Is and How to Use It</h1>
+            <div class="post-meta mt-3 mb-4 text-muted" style="font-size:1.1rem;">
+                <span class="me-4"><i class="fa-regular fa-calendar text-gold"></i> June 12, 2026</span>
+                <span><i class="fa-regular fa-clock text-gold"></i> 6 min read</span>
+            </div>
+            <div class="post-content glass-card" style="padding:3.5rem;">
+                <p class="mb-4" style="font-size:1.25rem;line-height:1.6;color:#fff;">If you've ever seen a long string of letters and numbers ending in one or two equals signs embedded in a URL, email, or HTML file, you've encountered Base64. It looks like encryption, but it isn't — and understanding the difference matters.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">What is Base64?</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Base64 is an encoding scheme that converts binary data into a text format using only 64 characters: uppercase letters A-Z, lowercase letters a-z, digits 0-9, and two symbols (typically + and /). The equals sign (=) is used for padding at the end.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">The purpose of Base64 is simple: many systems were designed to handle only text, not raw binary data. Base64 lets you represent any binary data — images, files, encrypted content — as plain text that can pass safely through text-based systems like email, JSON, XML, and URLs.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Is Base64 Encryption?</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">This is the most common misconception about Base64. <strong>Base64 is NOT encryption</strong> — it provides zero security. Anyone can decode a Base64 string instantly using a free online tool, a single line of code, or even built-in browser functions.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Base64 is purely a <strong>data representation format</strong>, not a security mechanism. If you see Base64 used to "hide" sensitive information like passwords or API keys, that data is effectively stored in plain text — anyone with access can read it in seconds.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">For actual security, you need real encryption algorithms like AES, which require a secret key that Base64 simply doesn't have.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">How Does Base64 Encoding Work?</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Base64 works by taking binary data in groups of 3 bytes (24 bits) and re-encoding it into 4 groups of 6 bits each. Since 6 bits can represent 64 different values (2^6 = 64), each group maps to one of the 64 characters in the Base64 alphabet.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">This process increases the data size by approximately 33% — a 3-byte chunk of binary data becomes 4 characters of Base64 text. This overhead is the tradeoff for being able to safely transmit binary data through text-only channels.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Common Use Cases for Base64</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li><strong>Email attachments</strong> — Email protocols (SMTP/MIME) were originally text-only, so attachments like images and documents are Base64 encoded</li>
+                    <li><strong>Embedding images in HTML/CSS</strong> — Small images can be embedded directly as Base64 data URIs, avoiding extra HTTP requests</li>
+                    <li><strong>API authentication</strong> — Basic HTTP authentication encodes the username:password combination in Base64 (note: this is for transport format, not security)</li>
+                    <li><strong>Storing binary data in JSON/XML</strong> — Since JSON and XML are text formats, binary data like images or files must be Base64 encoded to be included</li>
+                    <li><strong>Data URLs</strong> — Browsers can render images, fonts, and other files directly from a Base64 data URL without a separate file</li>
+                    <li><strong>URL-safe identifiers</strong> — A variant called Base64URL is used in JWT (JSON Web Tokens) and other web tokens</li>
+                </ul>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Example: Encoding Text to Base64</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">When you encode plain text like "Hello World" into Base64, each character is converted to its binary representation, then regrouped and mapped to Base64 characters. The result is a string that looks completely different from the original but contains exactly the same information — just represented differently.</p>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Decoding simply reverses this process — taking the Base64 string and converting it back to the original binary data or text, perfectly and losslessly.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">Why You Might Need a Base64 Tool</h2>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Developers regularly need to encode or decode Base64 when working with APIs, debugging authentication headers, embedding images, or inspecting JWT tokens. Doing this by hand or writing a script for a quick one-off task is wasteful — a browser-based tool gives you the result instantly.</p>
+
+                <h2 class="mt-5 mb-3 text-gold" style="font-size:1.8rem;border-bottom:1px solid rgba(212,175,55,0.2);padding-bottom:10px;">How to Use Toolmetri's Base64 Tool</h2>
+                <ul class="mb-4 text-muted" style="font-size:1.1rem;line-height:2;padding-left:1.5rem;">
+                    <li>Paste your plain text or Base64 string into the input box</li>
+                    <li>Click <strong>Encode to Base64</strong> to convert text into Base64</li>
+                    <li>Click <strong>Decode from Base64</strong> to convert a Base64 string back to readable text</li>
+                    <li>Use <strong>Copy</strong> to grab the output instantly</li>
+                </ul>
+                <p class="mb-4 text-muted" style="font-size:1.1rem;line-height:1.8;">Everything runs locally in your browser — nothing is sent to a server, making it safe for tokens, headers, and other data you'd rather keep private.</p>
+
+                <div class="mt-5 p-5 text-center glass-card" style="background:rgba(212,175,55,0.04);border:1px solid rgba(212,175,55,0.25);">
+                    <h3 class="mb-3 gradient-text" style="font-size:2rem;">Encode or decode Base64 instantly</h3>
+                    <p class="mb-4 text-muted" style="font-size:1.2rem;">Free, private, runs entirely in your browser.</p>
+                    <a href="../tools.html" class="btn btn-primary lg-btn"><i class="fa-solid fa-lock me-2"></i> Open Base64 Tool</a>
+                </div>
+            </div>
+        </article>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../privacy.html">Privacy Policy</a>
+            </div>
+            <p class="copyright">&copy; 2026 Toolmetri. Free, Fast & Reliable Utilities.</p>
+        </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
