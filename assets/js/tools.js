@@ -623,14 +623,17 @@ if(ipBtn){
         try{
             const r=await fetch('https://get.geojs.io/v1/ip/geo.json');
             const d=await r.json();
+            const boxStyle="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1rem;text-align:center;";
+            const labelStyle="display:block;color:#999;font-size:0.85rem;margin-bottom:6px;";
+            const valueStyle="display:block;color:#f3e5ab;font-size:1.2rem;font-weight:700;";
             document.getElementById('ip-result').innerHTML=`
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">IP Address</span><span style="font-size:1.2rem;font-weight:700;">${d.ip||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Country</span><span style="font-size:1.2rem;font-weight:700;">${d.country||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">City</span><span style="font-size:1.2rem;font-weight:700;">${d.city||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Region</span><span style="font-size:1.2rem;font-weight:700;">${d.region||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">ISP</span><span style="font-size:1.1rem;font-weight:700;">${d.organization_name||d.organization||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Timezone</span><span style="font-size:1.1rem;font-weight:700;">${d.timezone||'N/A'}</span></div>
+                    <div style="${boxStyle}"><span style="${labelStyle}">IP Address</span><span style="${valueStyle}">${d.ip||'N/A'}</span></div>
+                    <div style="${boxStyle}"><span style="${labelStyle}">Country</span><span style="${valueStyle}">${d.country||'N/A'}</span></div>
+                    <div style="${boxStyle}"><span style="${labelStyle}">City</span><span style="${valueStyle}">${d.city||'N/A'}</span></div>
+                    <div style="${boxStyle}"><span style="${labelStyle}">Region</span><span style="${valueStyle}">${d.region||'N/A'}</span></div>
+                    <div style="${boxStyle}"><span style="${labelStyle}">ISP</span><span style="${valueStyle}">${d.organization_name||d.organization||'N/A'}</span></div>
+                    <div style="${boxStyle}"><span style="${labelStyle}">Timezone</span><span style="${valueStyle}">${d.timezone||'N/A'}</span></div>
                 </div>`;
         }catch(e){document.getElementById('ip-result').innerHTML='<p style="color:#ef4444;">Could not fetch IP info. Try again.</p>';}
         ipBtn.disabled=false;
