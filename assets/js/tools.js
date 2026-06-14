@@ -621,16 +621,16 @@ if(ipBtn){
         ipBtn.disabled=true;
         ipBtn.innerHTML='<i class="fa-solid fa-spinner fa-spin me-2"></i> Looking up...';
         try{
-            const r=await fetch('https://ipapi.co/json/');
+            const r=await fetch('https://ipwho.is/');
             const d=await r.json();
             document.getElementById('ip-result').innerHTML=`
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                     <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">IP Address</span><span style="font-size:1.2rem;font-weight:700;">${d.ip||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Country</span><span style="font-size:1.2rem;font-weight:700;">${d.country_name||'N/A'}</span></div>
+                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Country</span><span style="font-size:1.2rem;font-weight:700;">${d.country||'N/A'}</span></div>
                     <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">City</span><span style="font-size:1.2rem;font-weight:700;">${d.city||'N/A'}</span></div>
                     <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Region</span><span style="font-size:1.2rem;font-weight:700;">${d.region||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">ISP</span><span style="font-size:1.1rem;font-weight:700;">${d.org||'N/A'}</span></div>
-                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Timezone</span><span style="font-size:1.1rem;font-weight:700;">${d.timezone||'N/A'}</span></div>
+                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">ISP</span><span style="font-size:1.1rem;font-weight:700;">${(d.connection&&d.connection.isp)||'N/A'}</span></div>
+                    <div class="output-box" style="flex-direction:column;gap:4px;padding:1rem;"><span class="text-muted" style="font-size:0.85rem;">Timezone</span><span style="font-size:1.1rem;font-weight:700;">${(d.timezone&&d.timezone.id)||'N/A'}</span></div>
                 </div>`;
         }catch(e){document.getElementById('ip-result').innerHTML='<p style="color:#ef4444;">Could not fetch IP info. Try again.</p>';}
         ipBtn.disabled=false;
