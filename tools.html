@@ -427,6 +427,74 @@
                 </div>
             </div>
 
+            <!-- Loan / EMI Calculator -->
+            <div id="tool-emi" class="tool-interface hidden">
+                <h2 class="text-center text-gold mb-5" style="font-size:2.2rem;">Loan / EMI Calculator</h2>
+                <div class="tool-layout">
+                    <div>
+                        <label class="text-muted d-block mb-2">Loan Amount</label>
+                        <input type="number" id="emi-principal" class="modern-input mb-3" placeholder="e.g. 500000" style="padding:18px;">
+                        <label class="text-muted d-block mb-2">Annual Interest Rate (%)</label>
+                        <input type="number" id="emi-rate" class="modern-input mb-3" placeholder="e.g. 10" style="padding:18px;">
+                        <label class="text-muted d-block mb-2">Loan Tenure (months)</label>
+                        <input type="number" id="emi-tenure" class="modern-input mb-3" placeholder="e.g. 60" style="padding:18px;">
+                        <button id="emi-btn" class="btn btn-primary w-100" style="padding:16px;font-size:1.1rem;"><i class="fa-solid fa-calculator me-2"></i> Calculate EMI</button>
+                    </div>
+                    <div class="text-center" style="display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;min-height:250px;padding:2rem;">
+                        <p class="text-muted mb-2" style="font-size:1.1rem;">Monthly EMI</p>
+                        <h3 id="emi-result" class="text-gold gradient-text mb-3" style="font-size:3rem;font-weight:800;">--</h3>
+                        <div style="display:flex;gap:2rem;justify-content:center;width:100%;">
+                            <div><p class="text-muted" style="font-size:0.9rem;">Total Payment</p><p style="font-weight:700;font-size:1.2rem;" id="emi-total-payment">--</p></div>
+                            <div><p class="text-muted" style="font-size:0.9rem;">Total Interest</p><p style="font-weight:700;font-size:1.2rem;" id="emi-total-interest">--</p></div>
+                        </div>
+                        <div id="emi-breakdown" style="display:none;width:100%;margin-top:1rem;">
+                            <div style="display:flex;border-radius:8px;overflow:hidden;height:14px;width:100%;">
+                                <div id="emi-principal-bar" style="background:#d4af37;height:100%;"></div>
+                                <div id="emi-interest-bar" style="background:#3b82f6;height:100%;"></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.85rem;" class="text-muted">
+                                <span>Principal: <span id="emi-principal-pct"></span></span>
+                                <span>Interest: <span id="emi-interest-pct"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compound Interest Calculator -->
+            <div id="tool-compound" class="tool-interface hidden">
+                <h2 class="text-center text-gold mb-5" style="font-size:2.2rem;">Compound Interest Calculator</h2>
+                <div class="tool-layout">
+                    <div>
+                        <label class="text-muted d-block mb-2">Initial Principal</label>
+                        <input type="number" id="compound-principal" class="modern-input mb-3" placeholder="e.g. 1000" style="padding:18px;">
+                        <label class="text-muted d-block mb-2">Annual Interest Rate (%)</label>
+                        <input type="number" id="compound-rate" class="modern-input mb-3" placeholder="e.g. 7" style="padding:18px;">
+                        <label class="text-muted d-block mb-2">Number of Years</label>
+                        <input type="number" id="compound-years" class="modern-input mb-3" placeholder="e.g. 10" style="padding:18px;">
+                        <label class="text-muted d-block mb-2">Compounding Frequency</label>
+                        <select id="compound-freq" class="modern-input w-100 mb-3" style="padding:15px;">
+                            <option value="1">Annually</option>
+                            <option value="2">Semi-Annually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12" selected>Monthly</option>
+                            <option value="365">Daily</option>
+                        </select>
+                        <label class="text-muted d-block mb-2">Additional Contribution per Period (optional)</label>
+                        <input type="number" id="compound-contribution" class="modern-input mb-3" placeholder="e.g. 50" style="padding:18px;">
+                        <button id="compound-btn" class="btn btn-primary w-100" style="padding:16px;font-size:1.1rem;"><i class="fa-solid fa-chart-line me-2"></i> Calculate</button>
+                    </div>
+                    <div class="text-center" style="display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;min-height:250px;padding:2rem;">
+                        <p class="text-muted mb-2" style="font-size:1.1rem;">Future Value</p>
+                        <h3 id="compound-result" class="text-gold gradient-text mb-3" style="font-size:3rem;font-weight:800;">--</h3>
+                        <div id="compound-breakdown" style="display:none;width:100%;display:flex;gap:2rem;justify-content:center;">
+                            <div><p class="text-muted" style="font-size:0.9rem;">Total Contributions</p><p style="font-weight:700;font-size:1.2rem;" id="compound-total-contributions">--</p></div>
+                            <div><p class="text-muted" style="font-size:0.9rem;">Interest Earned</p><p style="font-weight:700;font-size:1.2rem;" id="compound-total-interest">--</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
