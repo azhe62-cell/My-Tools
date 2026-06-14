@@ -20,6 +20,8 @@ const TOOLS_REGISTRY = [
     { id: 'diff',        icon: 'fa-code-compare',   label: 'Text Diff Checker'    },
     { id: 'metatag',     icon: 'fa-tags',           label: 'Meta Tag Generator'   },
     { id: 'ip',          icon: 'fa-globe',          label: 'IP Lookup'            },
+    { id: 'emi',         icon: 'fa-money-bill-wave',label: 'Loan / EMI Calculator'},
+    { id: 'compound',    icon: 'fa-chart-line',     label: 'Compound Interest'    },
     { id: 'word',        icon: 'fa-spell-check',    label: 'Word Counter'         },
     { id: 'typing',      icon: 'fa-keyboard',       label: 'Typing Speed'         },
     { id: 'age',         icon: 'fa-calendar',       label: 'Age Calculator'       },
@@ -633,5 +635,63 @@ if(ipBtn){
         }catch(e){document.getElementById('ip-result').innerHTML='<p style="color:#ef4444;">Could not fetch IP info. Try again.</p>';}
         ipBtn.disabled=false;
         ipBtn.innerHTML='<i class="fa-solid fa-globe me-2"></i> Lookup My IP';
+    });
+}
+
+// ============================================================
+// 24. Loan / EMI Calculator
+// ============================================================
+const emiBtn=document.getElementById('emi-btn');
+if(emiBtn){
+    emiBtn.addEventListener('click',()=>{
+        const principal=parseFloat(document.getElementById('emi-principal').value);
+        const annualRate=parseFloat(document.getElementById('emi-rate').value);
+        const months=parseFloat(document.getElementById('emi-tenure').value);
+        if(!principal||!annualRate||!months){alert('Please fill in all fields');return;}
+        const monthlyRate=(annualRate/12)/100;
+        const emi=(principal*monthlyRate*Math.pow(1+monthlyRate,months))/(Math.pow(1+monthlyRate,months)-1);
+        const totalPayment=emi*months;
+        const totalInterest=totalPayment-principal;
+        document.getElementById('emi-result').innerText=isFinite(emi)?emi.toFixed(2):'--';
+        document.getElementById('emi-total-payment').innerText=isFinite(totalPayment)?totalPayment.toFixed(2):'--';
+        document.getElementById('emi-total-interest').innerText=isFinite(totalInterest)?totalInterest.toFixed(2):'--';
+        document.getElementById('emi-breakdown').style.display='block';
+        const principalPct=(principal/totalPayment*100).toFixed(1);
+        const interestPct=(totalInterest/totalPayment*100).toFixed(1);
+        document.getElementById('emi-principal-bar').style.width=principalPct+'%';
+        document.getElementById('emi-interest-bar').style.width=interestPct+'%';
+        document.getElementById('emi-principal-pct').innerText=principalPct+'%';
+        document.getElementById('emi-interest-pct').innerText=interestPct+'%';
+    });
+}
+
+// ============================================================
+// 25. Compound Interest Calculator
+// ============================================================
+const compoundBtn=document.getElementById('compound-btn');
+if(compoundBtn){
+    compoundBtn.addEventListener('click',()=>{
+        const principal=parseFloat(document.getElementById('compound-principal').value);
+        const rate=parseFloat(document.getElementById('compound-rate').value);
+        const years=parseFloat(document.getElementById('compound-years').value);
+        const freq=parseInt(document.getElementById('compound-freq').value);
+        const contribution=parseFloat(document.getElementById('compound-contribution').value)||0;
+        if(!principal||!rate||!years){alert('Please fill in principal, rate, and years');return;}
+        const r=rate/100;
+        const n=freq;
+        const t=years;
+        let amount=principal*Math.pow(1+r/n,n*t);
+        if(contribution>0){
+            const periodicRate=r/n;
+            const numPeriods=n*t;
+            const futureValueContributions=contribution*((Math.pow(1+periodicRate,numPeriods)-1)/periodicRate);
+            amount+=futureValueContributions;
+        }
+        const totalContributions=principal+(contribution*n*t);
+        const totalInterestEarned=amount-totalContributions;
+        document.getElementById('compound-result').innerText=amount.toFixed(2);
+        document.getElementById('compound-total-contributions').innerText=totalContributions.toFixed(2);
+        document.getElementById('compound-total-interest').innerText=totalInterestEarned.toFixed(2);
+        document.getElementById('compound-breakdown').style.display='block';
     });
 }
