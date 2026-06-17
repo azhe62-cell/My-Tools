@@ -12,7 +12,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 body {
-    background: linear-gradient(165deg, #5b4d85 0%, #8a6fa3 35%, #b97fb0 65%, #c98aab 100%);
+    background: linear-gradient(135deg, #6d28d9 0%, #a855f7 55%, #ec4899 100%);
     background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.6;
