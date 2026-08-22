@@ -27,6 +27,7 @@ const TOOLS_REGISTRY = [
     { id: 'age',         icon: 'fa-calendar',       label: 'Age Calculator'       },
     { id: 'currency',    icon: 'fa-coins',          label: 'Currency Rates'       },
     { id: 'morse',       icon: 'fa-wave-square',    label: 'Morse Cipher'         },
+    { id: 'stylish',     icon: 'fa-wand-sparkles',  label: 'Stylish Text Generator'},
 ];
 
 // Auto-build tools selector grid
@@ -696,5 +697,127 @@ if(compoundBtn){
         document.getElementById('compound-total-contributions').innerText=totalContributions.toFixed(2);
         document.getElementById('compound-total-interest').innerText=totalInterestEarned.toFixed(2);
         document.getElementById('compound-breakdown').style.display='block';
+    });
+}
+
+// ============================================================
+// 26. Stylish Text Generator
+// ============================================================
+const stylishBtn = document.getElementById('stylish-btn');
+if (stylishBtn) {
+    const UP = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    const LOW = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    const DIG = ['0','1','2','3','4','5','6','7','8','9'];
+
+    function buildMap(upStart, lowStart, digStart, upExceptions = {}, lowExceptions = {}) {
+        const map = {};
+        UP.forEach((c, i) => { map[c] = upExceptions[c] || (upStart !== null ? String.fromCodePoint(upStart + i) : c); });
+        LOW.forEach((c, i) => { map[c] = lowExceptions[c] || (lowStart !== null ? String.fromCodePoint(lowStart + i) : c); });
+        DIG.forEach((c, i) => { map[c] = (digStart !== null) ? String.fromCodePoint(digStart + i) : c; });
+        return map;
+    }
+
+    function applyMap(text, map) {
+        return text.split('').map(ch => map[ch] !== undefined ? map[ch] : ch).join('');
+    }
+
+    const scriptUpExceptions = { B:'\u212C', E:'\u2130', F:'\u2131', H:'\u210B', I:'\u2110', L:'\u2112', M:'\u2133', R:'\u211B' };
+    const scriptLowExceptions = { e:'\u212F', g:'\u210A', o:'\u2134' };
+    const doubleUpExceptions = { C:'\u2102', H:'\u210D', N:'\u2115', P:'\u2119', Q:'\u211A', R:'\u211D', Z:'\u2124' };
+
+    const smallCapsMap = { a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ' };
+    const upsideMap = { a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ƃ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',s:'s',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',x:'x',y:'ʎ',z:'z' };
+    const circledDigits = { '0':'\u24EA','1':'\u2460','2':'\u2461','3':'\u2462','4':'\u2463','5':'\u2464','6':'\u2465','7':'\u2466','8':'\u2467','9':'\u2468' };
+
+    function toSmallCaps(text) {
+        return text.split('').map(ch => smallCapsMap[ch.toLowerCase()] || ch).join('');
+    }
+    function toUpsideDown(text) {
+        return text.split('').reverse().map(ch => upsideMap[ch.toLowerCase()] || ch).join('');
+    }
+    function toStrikethrough(text) {
+        return text.split('').map(ch => ch + '\u0336').join('');
+    }
+    function toCircled(text) {
+        return text.split('').map(ch => {
+            if (circledDigits[ch]) return circledDigits[ch];
+            if (/[A-Z]/.test(ch)) return String.fromCodePoint(0x24B6 + (ch.charCodeAt(0) - 65));
+            if (/[a-z]/.test(ch)) return String.fromCodePoint(0x24D0 + (ch.charCodeAt(0) - 97));
+            return ch;
+        }).join('');
+    }
+    function toSquared(text) {
+        return text.toUpperCase().split('').map(ch => {
+            if (/[A-Z]/.test(ch)) return String.fromCodePoint(0x1F130 + (ch.charCodeAt(0) - 65));
+            return ch;
+        }).join('');
+    }
+
+    const boldMap = buildMap(0x1D400, 0x1D41A, 0x1D7CE);
+    const italicMap = buildMap(0x1D434, 0x1D44E, null, {}, { h: '\u210E' });
+    const boldItalicMap = buildMap(0x1D468, 0x1D482, null);
+    const scriptMap = buildMap(0x1D49C, 0x1D4B6, null, scriptUpExceptions, scriptLowExceptions);
+    const doubleMap = buildMap(0x1D538, 0x1D552, 0x1D7D8, doubleUpExceptions);
+    const monoMap = buildMap(0x1D670, 0x1D68A, 0x1D7F6);
+    const fullwidthMap = buildMap(0xFF21, 0xFF41, 0xFF10);
+
+    stylishBtn.addEventListener('click', () => {
+        const input = document.getElementById('stylish-input').value;
+        const container = document.getElementById('stylish-output');
+        container.innerHTML = '';
+        if (!input.trim()) { alert('Please type some text first'); return; }
+
+        const variants = [
+            { name: 'Bold', text: applyMap(input, boldMap) },
+            { name: 'Italic', text: applyMap(input, italicMap) },
+            { name: 'Bold Italic', text: applyMap(input, boldItalicMap) },
+            { name: 'Script', text: applyMap(input, scriptMap) },
+            { name: 'Double-Struck', text: applyMap(input, doubleMap) },
+            { name: 'Monospace', text: applyMap(input, monoMap) },
+            { name: 'Fullwidth', text: applyMap(input, fullwidthMap) },
+            { name: 'Circled', text: toCircled(input) },
+            { name: 'Squared', text: toSquared(input) },
+            { name: 'Small Caps', text: toSmallCaps(input) },
+            { name: 'Strikethrough', text: toStrikethrough(input) },
+            { name: 'Upside Down', text: toUpsideDown(input) },
+            { name: 'Decorative I', text: `꧁ • ${input} • ꧂` },
+            { name: 'Decorative II', text: `『 ${input} 』` },
+            { name: 'Decorative III', text: `★彡 ${input} 彡★` },
+        ];
+
+        variants.forEach(v => {
+            const row = document.createElement('div');
+            row.className = 'output-box mb-3';
+            row.style.cssText = 'flex-direction:column;align-items:flex-start;gap:8px;padding:1.2rem 1.5rem;';
+
+            const label = document.createElement('span');
+            label.className = 'text-muted';
+            label.style.fontSize = '0.85rem';
+            label.innerText = v.name;
+
+            const textRow = document.createElement('div');
+            textRow.style.cssText = 'display:flex;align-items:center;justify-content:space-between;width:100%;gap:1rem;';
+
+            const textSpan = document.createElement('span');
+            textSpan.style.cssText = 'font-size:1.15rem;word-break:break-all;flex:1;';
+            textSpan.innerText = v.text;
+
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'btn btn-outline';
+            copyBtn.style.cssText = 'padding:8px 16px;white-space:nowrap;';
+            copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i>';
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(v.text).then(() => {
+                    copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    setTimeout(() => { copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i>'; }, 1500);
+                });
+            });
+
+            textRow.appendChild(textSpan);
+            textRow.appendChild(copyBtn);
+            row.appendChild(label);
+            row.appendChild(textRow);
+            container.appendChild(row);
+        });
     });
 }
