@@ -2,6 +2,7 @@
 // TOOLS REGISTRY — Add new tools here, they auto-appear in UI
 // ============================================================
 const TOOLS_REGISTRY = [
+    { id: 'typing',      icon: 'fa-keyboard',       label: 'Typing Test'          },
     { id: 'qr',          icon: 'fa-qrcode',        label: 'QR Generator'         },
     { id: 'barcode',     icon: 'fa-barcode',        label: 'Barcode Studio'       },
     { id: 'password',    icon: 'fa-key',            label: 'Password Generator'   },
@@ -23,7 +24,6 @@ const TOOLS_REGISTRY = [
     { id: 'emi',         icon: 'fa-money-bill-wave',label: 'Loan / EMI Calculator'},
     { id: 'compound',    icon: 'fa-chart-line',     label: 'Compound Interest'    },
     { id: 'word',        icon: 'fa-spell-check',    label: 'Word Counter'         },
-    { id: 'typing',      icon: 'fa-keyboard',       label: 'Typing Speed'         },
     { id: 'age',         icon: 'fa-calendar',       label: 'Age Calculator'       },
     { id: 'currency',    icon: 'fa-coins',          label: 'Currency Rates'       },
     { id: 'morse',       icon: 'fa-wave-square',    label: 'Morse Cipher'         },
@@ -212,46 +212,160 @@ if (toMorseBtn) {
 // ============================================================
 // 7. Typing Test
 // ============================================================
-const typeStartBtn = document.getElementById('start-typing-btn');
-if (typeStartBtn) {
-    const quotes = {
-        easy: ["The sun is shining brightly today.","A cat sat on the mat.","I love to eat fresh apples.","Technology is advancing fast.","This is a premium service."],
-        medium: ["Success is not final, failure is not fatal.","Life is what happens when you're busy making other plans.","The quick brown fox jumps over the lazy dog."],
-        hard: ["To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer.","Quantum computing algorithms significantly alter current cryptography methodologies.","Robust system architectures depend on resilient infrastructure protocols."]
+const typingStartBtn = document.getElementById('typing-start-btn');
+if (typingStartBtn) {
+    const WORD_BANKS = {
+        easy: ["the","be","to","of","and","a","in","that","have","it","for","not","on","with","he","as","you","do","at","this","but","his","by","from","they","we","say","her","she","or","an","will","my","one","all","would","there","their","what","so","up","out","if","about","who","get","which","go","me","when","make","can","like","time","no","just","him","know","take","people","into","year","your","good","some","could","them","see","other","than","then","now","look","only","come","its","over","think","also","back","after","use","two","how","our","work","first","well","way","even","new","want","because","any","these","give","day","most","us"],
+        medium: ["important","business","development","system","information","company","number","group","problem","fact","between","during","before","different","following","without","however","interest","service","question","although","level","program","possible","increase","against","result","local","point","support","area","research","report","understand","policy","economic","consider","provide","include","several","similar","study","toward","player","student","industry","present","standard","practice","project","control","common","various","special","required","training","despite","condition","situation","attention","current","become","message","machine","network","feature","product","customer","material","process","quality","resource","strategy","structure","technology","platform","solution"],
+        hard: ["nevertheless","approximately","significant","fundamentally","consequently","inevitably","phenomenon","subsequent","comprehensive","predominantly","circumstance","infrastructure","implementation","characteristic","substantially","methodology","perspective","controversial","unprecedented","technological","philosophical","organizational","interpretation","sophisticated","autonomous","hypothesis","legislation","perpetually","simultaneously","paradoxically","ambiguous","juxtaposition","quintessential","meticulous","unequivocal","superfluous","idiosyncratic","cognizant","ubiquitous","reconciliation","disproportionate","unequivocally","circumvent","exacerbate","proliferation"]
     };
-    let timer=60,interval=null,playing=false,currentQuote='',currentDiff='easy';
-    document.querySelectorAll('.diff-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-            if(playing) return;
-            document.querySelectorAll('.diff-btn').forEach(b=>b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentDiff = e.target.getAttribute('data-diff');
+
+    const durationSelect = document.getElementById('typing-duration');
+    let selectedDuration = parseInt(durationSelect.value);
+    let selectedDifficulty = 'easy';
+    let timeLeft = selectedDuration;
+    let timerInterval = null;
+    let playing = false;
+    let startTime = null;
+
+    function formatTime(s) {
+        if (s < 60) return s + 's';
+        const m = Math.floor(s / 60), sec = s % 60;
+        return sec === 0 ? m + 'm' : m + 'm ' + sec + 's';
+    }
+
+    function bestKey() { return `toolmetri_typing_best_${selectedDifficulty}_${selectedDuration}`; }
+    function updateBestDisplay() {
+        const best = localStorage.getItem(bestKey());
+        document.getElementById('typing-best-display').innerText = best ? best + ' WPM' : '--';
+    }
+
+    document.getElementById('typing-time-display').innerText = formatTime(selectedDuration);
+    updateBestDisplay();
+
+    durationSelect.addEventListener('change', () => {
+        if (playing) return;
+        selectedDuration = parseInt(durationSelect.value);
+        timeLeft = selectedDuration;
+        document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
+        updateBestDisplay();
+    });
+
+    document.querySelectorAll('#tool-typing .diff-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (playing) return;
+            document.querySelectorAll('#tool-typing .diff-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedDifficulty = btn.getAttribute('data-diff');
+            updateBestDisplay();
         });
     });
-    typeStartBtn.addEventListener('click', () => {
-        const box = document.getElementById('quote-display'), inp = document.getElementById('typing-input');
+
+    function wordsNeededFor(durationSeconds) {
+        return Math.ceil((durationSeconds / 60) * 160) + 25;
+    }
+
+    function generateText(difficulty, wordCount) {
+        const bank = WORD_BANKS[difficulty];
+        let words = [];
+        for (let i = 0; i < wordCount; i++) words.push(bank[Math.floor(Math.random() * bank.length)]);
+        let result = [];
+        let capitalizeNext = true;
+        let sincePeriod = 0;
+        for (let i = 0; i < words.length; i++) {
+            let w = words[i];
+            if (capitalizeNext) { w = w.charAt(0).toUpperCase() + w.slice(1); capitalizeNext = false; }
+            sincePeriod++;
+            const sentenceLen = 8 + Math.floor(Math.random() * 6);
+            if (sincePeriod >= sentenceLen) {
+                w += '.'; capitalizeNext = true; sincePeriod = 0;
+            } else if (difficulty !== 'easy' && Math.random() < 0.12) {
+                w += ',';
+            }
+            result.push(w);
+        }
+        if (!/\.$/.test(result[result.length - 1])) result[result.length - 1] += '.';
+        return result.join(' ');
+    }
+
+    function renderText(text) {
+        const el = document.getElementById('typing-text-content');
+        el.innerHTML = '';
+        text.split('').forEach(ch => {
+            const span = document.createElement('span');
+            span.innerText = ch;
+            el.appendChild(span);
+        });
+    }
+
+    typingStartBtn.addEventListener('click', () => {
+        const input = document.getElementById('typing-input');
         if (!playing) {
-            playing=true; timer=60;
-            currentQuote=quotes[currentDiff][Math.floor(Math.random()*quotes[currentDiff].length)];
-            box.innerHTML='';
-            currentQuote.split('').forEach(c=>{ const s=document.createElement('span'); s.innerText=c; box.appendChild(s); });
-            inp.disabled=false; inp.value=''; inp.focus();
-            typeStartBtn.innerHTML='<i class="fa-solid fa-stop me-2"></i> Stop';
-            document.getElementById('wpm-display').innerText='0';
-            document.getElementById('acc-display').innerText='100%';
-            interval=setInterval(()=>{ timer--; document.getElementById('time-display').innerText=timer+'s'; if(timer<=0) endTest(); },1000);
-        } else endTest();
+            playing = true;
+            timeLeft = selectedDuration;
+            const fullText = generateText(selectedDifficulty, wordsNeededFor(selectedDuration));
+            renderText(fullText);
+            input.disabled = false;
+            input.value = '';
+            input.focus();
+            typingStartBtn.innerHTML = '<i class="fa-solid fa-stop me-2"></i> Stop Test';
+            document.getElementById('typing-wpm-display').innerText = '0';
+            document.getElementById('typing-acc-display').innerText = '100%';
+            document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
+            document.getElementById('typing-text-box').scrollTop = 0;
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
+                if (timeLeft <= 0) endTest();
+            }, 1000);
+        } else {
+            endTest();
+        }
     });
+
     document.getElementById('typing-input').addEventListener('input', e => {
-        if(!playing) return;
-        const spans=document.querySelectorAll('#quote-display span'), typed=e.target.value.split('');
-        let ok=true;
-        spans.forEach((s,i)=>{ if(typed[i]==null){s.classList.remove('text-gold','text-error');ok=false;} else if(typed[i]===s.innerText){s.classList.add('text-gold');s.classList.remove('text-error');} else{s.classList.add('text-error');s.classList.remove('text-gold');ok=false;} });
-        calcStats(e.target.value,currentQuote);
-        if(ok) endTest();
+        if (!playing) return;
+        const spans = document.querySelectorAll('#typing-text-content span');
+        const typed = e.target.value.split('');
+        let correctCount = 0;
+        typed.forEach((ch, i) => {
+            const span = spans[i];
+            if (!span) return;
+            if (ch === span.innerText) { span.classList.add('text-gold'); span.classList.remove('text-error'); correctCount++; }
+            else { span.classList.add('text-error'); span.classList.remove('text-gold'); }
+        });
+        spans.forEach((span, i) => { if (i >= typed.length) { span.classList.remove('text-gold', 'text-error'); } });
+
+        const currentSpan = spans[typed.length] || spans[spans.length - 1];
+        if (currentSpan) {
+            const box = document.getElementById('typing-text-box');
+            box.scrollTop = currentSpan.offsetTop - box.clientHeight / 2 + 20;
+        }
+
+        const elapsedMinutes = (Date.now() - startTime) / 60000 || (1 / 60000);
+        const wpm = Math.round((correctCount / 5) / elapsedMinutes);
+        const acc = typed.length > 0 ? Math.round((correctCount / typed.length) * 100) : 100;
+        document.getElementById('typing-wpm-display').innerText = isFinite(wpm) ? wpm : 0;
+        document.getElementById('typing-acc-display').innerText = acc + '%';
+
+        if (typed.length >= spans.length) endTest();
     });
-    function endTest(){ playing=false; clearInterval(interval); const i=document.getElementById('typing-input'); i.disabled=true; typeStartBtn.innerHTML='<i class="fa-solid fa-redo me-2"></i> Restart'; calcStats(i.value,currentQuote); }
-    function calcStats(typed,actual){ if(!typed) return; const mins=(60-timer)/60||1/60; const wpm=Math.round(typed.trim().split(/\s+/).length/mins); let c=0; for(let i=0;i<typed.length;i++) if(typed[i]===actual[i]) c++; const acc=typed.length>0?Math.round((c/typed.length)*100):100; document.getElementById('wpm-display').innerText=isFinite(wpm)?wpm:0; document.getElementById('acc-display').innerText=acc+'%'; }
+
+    function endTest() {
+        playing = false;
+        clearInterval(timerInterval);
+        const input = document.getElementById('typing-input');
+        input.disabled = true;
+        typingStartBtn.innerHTML = '<i class="fa-solid fa-rotate-right me-2"></i> Try Again';
+
+        const finalWpm = parseInt(document.getElementById('typing-wpm-display').innerText) || 0;
+        const best = parseInt(localStorage.getItem(bestKey())) || 0;
+        if (finalWpm > best) {
+            localStorage.setItem(bestKey(), finalWpm);
+            updateBestDisplay();
+        }
+    }
 }
 
 // ============================================================
