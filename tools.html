@@ -359,24 +359,45 @@
                 </div>
             </div>
 
-            <!-- Typing Test -->
+                        <!-- Typing Test -->
             <div id="tool-typing" class="tool-interface hidden">
-                <h2 class="text-center text-gold mb-5" style="font-size:2.2rem;">Typing Speed Test</h2>
-                <div class="stats-grid mb-5">
-                    <div class="stat-box"><span class="text-muted d-block mb-2">Timer Left</span><span id="time-display" class="stat-num">60s</span></div>
-                    <div class="stat-box"><span class="text-muted d-block mb-2">Net WPM</span><span id="wpm-display" class="stat-num">0</span></div>
-                    <div class="stat-box"><span class="text-muted d-block mb-2">Accuracy</span><span id="acc-display" class="stat-num">100%</span></div>
+                <h2 class="text-center text-gold mb-5" style="font-size:2.2rem;">Typing Test</h2>
+
+                <div class="text-center mb-4" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
+                    <div>
+                        <label class="text-muted d-block mb-2">Duration</label>
+                        <select id="typing-duration" class="modern-input" style="padding:12px 20px;">
+                            <option value="15">15 Seconds</option>
+                            <option value="30">30 Seconds</option>
+                            <option value="60" selected>1 Minute</option>
+                            <option value="120">2 Minutes</option>
+                            <option value="180">3 Minutes</option>
+                            <option value="300">5 Minutes</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-muted d-block mb-2">Difficulty</label>
+                        <div style="display:flex;gap:8px;">
+                            <button class="btn btn-outline diff-btn active" data-diff="easy" style="padding:12px 20px;">Easy</button>
+                            <button class="btn btn-outline diff-btn" data-diff="medium" style="padding:12px 20px;">Medium</button>
+                            <button class="btn btn-outline diff-btn" data-diff="hard" style="padding:12px 20px;">Hard</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center mb-4" style="display:flex;justify-content:center;gap:15px;">
-                    <button class="btn btn-outline diff-btn active" data-diff="easy" style="padding:10px 25px;">Alpha Level</button>
-                    <button class="btn btn-outline diff-btn" data-diff="medium" style="padding:10px 25px;">Beta Level</button>
-                    <button class="btn btn-outline diff-btn" data-diff="hard" style="padding:10px 25px;">Sigma Level</button>
+
+                <div class="stats-grid mb-4">
+                    <div class="stat-box"><span class="text-muted d-block mb-2">Time Left</span><span id="typing-time-display" class="stat-num">60s</span></div>
+                    <div class="stat-box"><span class="text-muted d-block mb-2">WPM</span><span id="typing-wpm-display" class="stat-num">0</span></div>
+                    <div class="stat-box"><span class="text-muted d-block mb-2">Accuracy</span><span id="typing-acc-display" class="stat-num">100%</span></div>
+                    <div class="stat-box"><span class="text-muted d-block mb-2">Personal Best</span><span id="typing-best-display" class="stat-num">--</span></div>
                 </div>
-                <div style="background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.1);padding:2rem;text-align:center;border-radius:12px;margin-bottom:2rem;">
-                    <p id="quote-display" style="font-size:1.4rem;color:#ddd;line-height:1.8;font-weight:300;">Click Initialize Sequence to begin...</p>
+
+                <div id="typing-text-box" style="background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.1);padding:2rem;border-radius:12px;margin-bottom:2rem;height:140px;overflow:hidden;">
+                    <p id="typing-text-content" style="font-size:1.4rem;color:#ddd;line-height:2;font-weight:300;letter-spacing:0.5px;">Select your duration and difficulty, then click Start Test.</p>
                 </div>
-                <textarea id="typing-input" class="modern-input custom-scrollbar" style="min-height:120px;font-size:1.2rem;padding:20px;" placeholder="Awaiting initialization..." disabled></textarea>
-                <button id="start-typing-btn" class="btn btn-primary w-100 mt-2" style="padding:18px;font-size:1.2rem;font-weight:700;"><i class="fa-solid fa-power-off me-2"></i> Initialize Sequence</button>
+
+                <textarea id="typing-input" class="modern-input custom-scrollbar" style="min-height:100px;font-size:1.2rem;padding:20px;" placeholder="Click Start Test to begin..." disabled></textarea>
+                <button id="typing-start-btn" class="btn btn-primary w-100 mt-3" style="padding:18px;font-size:1.2rem;font-weight:700;"><i class="fa-solid fa-play me-2"></i> Start Test</button>
             </div>
 
             <!-- Age Calculator -->
