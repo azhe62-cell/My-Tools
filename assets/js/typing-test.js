@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hard: ["nevertheless","approximately","significant","fundamentally","consequently","inevitably","phenomenon","subsequent","comprehensive","predominantly","circumstance","infrastructure","implementation","characteristic","substantially","methodology","perspective","controversial","unprecedented","technological","philosophical","organizational","interpretation","sophisticated","autonomous","hypothesis","legislation","perpetually","simultaneously","paradoxically","ambiguous","juxtaposition","quintessential","meticulous","unequivocal","superfluous","idiosyncratic","cognizant","ubiquitous","reconciliation","disproportionate","unequivocally","circumvent","exacerbate","proliferation"]
     };
 
-    const LINE_HEIGHT_PX = 44;
+    const LINE_HEIGHT_PX = 50;
 
     const setupView = document.getElementById('typing-setup-view');
     const activeView = document.getElementById('typing-active-view');
@@ -78,7 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    textBox.addEventListener('click', () => hiddenInput.focus());
+    hiddenInput.addEventListener('blur', () => {
+        if (playing) setTimeout(() => hiddenInput.focus(), 0);
+    });
 
     startBtn.addEventListener('click', () => {
         const duration = parseInt(durationSelect.value);
