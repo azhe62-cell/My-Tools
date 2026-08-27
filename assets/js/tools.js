@@ -220,46 +220,32 @@ if (typingStartBtn) {
         hard: ["nevertheless","approximately","significant","fundamentally","consequently","inevitably","phenomenon","subsequent","comprehensive","predominantly","circumstance","infrastructure","implementation","characteristic","substantially","methodology","perspective","controversial","unprecedented","technological","philosophical","organizational","interpretation","sophisticated","autonomous","hypothesis","legislation","perpetually","simultaneously","paradoxically","ambiguous","juxtaposition","quintessential","meticulous","unequivocal","superfluous","idiosyncratic","cognizant","ubiquitous","reconciliation","disproportionate","unequivocally","circumvent","exacerbate","proliferation"]
     };
 
+    const setupView = document.getElementById('typing-setup-view');
+    const activeView = document.getElementById('typing-active-view');
+    const resultsView = document.getElementById('typing-results-view');
     const durationSelect = document.getElementById('typing-duration');
-    let selectedDuration = parseInt(durationSelect.value);
-    let selectedDifficulty = 'easy';
-    let timeLeft = selectedDuration;
-    let timerInterval = null;
-    let playing = false;
-    let startTime = null;
+    const difficultySelect = document.getElementById('typing-difficulty');
+    const hiddenInput = document.getElementById('typing-hidden-input');
+    const textContentEl = document.getElementById('typing-text-content');
+    const textBox = document.getElementById('typing-text-box');
 
-    function formatTime(s) {
-        if (s < 60) return s + 's';
-        const m = Math.floor(s / 60), sec = s % 60;
-        return sec === 0 ? m + 'm' : m + 'm ' + sec + 's';
-    }
+    let timeLeft, timerInterval, playing = false, startTime, fullText = '';
 
-    function bestKey() { return `toolmetri_typing_best_${selectedDifficulty}_${selectedDuration}`; }
+    function bestKey() { return `toolmetri_typing_best_${difficultySelect.value}_${durationSelect.value}`; }
+    function historyKey() { return `toolmetri_typing_history_${difficultySelect.value}_${durationSelect.value}`; }
+
     function updateBestDisplay() {
         const best = localStorage.getItem(bestKey());
         document.getElementById('typing-best-display').innerText = best ? best + ' WPM' : '--';
     }
-
-    document.getElementById('typing-time-display').innerText = formatTime(selectedDuration);
     updateBestDisplay();
+    durationSelect.addEventListener('change', updateBestDisplay);
+    difficultySelect.addEventListener('change', updateBestDisplay);
 
-    durationSelect.addEventListener('change', () => {
-        if (playing) return;
-        selectedDuration = parseInt(durationSelect.value);
-        timeLeft = selectedDuration;
-        document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
-        updateBestDisplay();
-    });
-
-    document.querySelectorAll('#tool-typing .diff-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (playing) return;
-            document.querySelectorAll('#tool-typing .diff-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            selectedDifficulty = btn.getAttribute('data-diff');
-            updateBestDisplay();
-        });
-    });
+    function formatTime(s) {
+        const m = Math.floor(s / 60), sec = s % 60;
+        return `${m}:${sec.toString().padStart(2, '0')}`;
+    }
 
     function wordsNeededFor(durationSeconds) {
         return Math.ceil((durationSeconds / 60) * 160) + 25;
@@ -289,44 +275,38 @@ if (typingStartBtn) {
     }
 
     function renderText(text) {
-        const el = document.getElementById('typing-text-content');
-        el.innerHTML = '';
+        textContentEl.innerHTML = '';
         text.split('').forEach(ch => {
             const span = document.createElement('span');
             span.innerText = ch;
-            el.appendChild(span);
+            textContentEl.appendChild(span);
         });
     }
 
     typingStartBtn.addEventListener('click', () => {
-        const input = document.getElementById('typing-input');
-        if (!playing) {
-            playing = true;
-            timeLeft = selectedDuration;
-            const fullText = generateText(selectedDifficulty, wordsNeededFor(selectedDuration));
-            renderText(fullText);
-            input.disabled = false;
-            input.value = '';
-            input.focus();
-            typingStartBtn.innerHTML = '<i class="fa-solid fa-stop me-2"></i> Stop Test';
-            document.getElementById('typing-wpm-display').innerText = '0';
-            document.getElementById('typing-acc-display').innerText = '100%';
+        const duration = parseInt(durationSelect.value);
+        timeLeft = duration;
+        fullText = generateText(difficultySelect.value, wordsNeededFor(duration));
+        renderText(fullText);
+        setupView.classList.add('hidden');
+        resultsView.classList.add('hidden');
+        activeView.classList.remove('hidden');
+        hiddenInput.value = '';
+        textBox.scrollTop = 0;
+        playing = true;
+        startTime = Date.now();
+        document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
+        setTimeout(() => hiddenInput.focus(), 50);
+        timerInterval = setInterval(() => {
+            timeLeft--;
             document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
-            document.getElementById('typing-text-box').scrollTop = 0;
-            startTime = Date.now();
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
-                if (timeLeft <= 0) endTest();
-            }, 1000);
-        } else {
-            endTest();
-        }
+            if (timeLeft <= 0) endTest();
+        }, 1000);
     });
 
-    document.getElementById('typing-input').addEventListener('input', e => {
+    hiddenInput.addEventListener('input', e => {
         if (!playing) return;
-        const spans = document.querySelectorAll('#typing-text-content span');
+        const spans = textContentEl.querySelectorAll('span');
         const typed = e.target.value.split('');
         let correctCount = 0;
         typed.forEach((ch, i) => {
@@ -339,34 +319,77 @@ if (typingStartBtn) {
 
         const currentSpan = spans[typed.length] || spans[spans.length - 1];
         if (currentSpan) {
-            const box = document.getElementById('typing-text-box');
-            box.scrollTop = currentSpan.offsetTop - box.clientHeight / 2 + 20;
+            const lineHeight = parseFloat(getComputedStyle(textContentEl).lineHeight) || 48;
+            textBox.scrollTop = Math.max(0, currentSpan.offsetTop - lineHeight);
         }
-
-        const elapsedMinutes = (Date.now() - startTime) / 60000 || (1 / 60000);
-        const wpm = Math.round((correctCount / 5) / elapsedMinutes);
-        const acc = typed.length > 0 ? Math.round((correctCount / typed.length) * 100) : 100;
-        document.getElementById('typing-wpm-display').innerText = isFinite(wpm) ? wpm : 0;
-        document.getElementById('typing-acc-display').innerText = acc + '%';
 
         if (typed.length >= spans.length) endTest();
     });
 
+    document.getElementById('typing-stop-btn').addEventListener('click', endTest);
+
     function endTest() {
+        if (!playing) return;
         playing = false;
         clearInterval(timerInterval);
-        const input = document.getElementById('typing-input');
-        input.disabled = true;
-        typingStartBtn.innerHTML = '<i class="fa-solid fa-rotate-right me-2"></i> Try Again';
 
-        const finalWpm = parseInt(document.getElementById('typing-wpm-display').innerText) || 0;
+        const typed = hiddenInput.value.split('');
+        const spans = textContentEl.querySelectorAll('span');
+        let correctCount = 0;
+        typed.forEach((ch, i) => { const span = spans[i]; if (span && ch === span.innerText) correctCount++; });
+
+        const elapsedMinutes = (Date.now() - startTime) / 60000 || (1 / 60000);
+        const wpm = Math.max(0, Math.round((correctCount / 5) / elapsedMinutes));
+        const acc = typed.length > 0 ? Math.round((correctCount / typed.length) * 100) : 100;
+        const netWpm = Math.round(wpm * (acc / 100));
+
+        document.getElementById('typing-result-wpm').innerText = wpm;
+        document.getElementById('typing-result-acc').innerText = acc + '%';
+        document.getElementById('typing-result-net').innerText = netWpm;
+
         const best = parseInt(localStorage.getItem(bestKey())) || 0;
-        if (finalWpm > best) {
-            localStorage.setItem(bestKey(), finalWpm);
-            updateBestDisplay();
-        }
+        if (netWpm > best) localStorage.setItem(bestKey(), netWpm);
+        updateBestDisplay();
+        const bestNow = localStorage.getItem(bestKey());
+        document.getElementById('typing-result-best').innerText = bestNow ? bestNow + ' WPM' : '--';
+
+        let history = JSON.parse(localStorage.getItem(historyKey()) || '[]');
+        history.push(netWpm);
+        if (history.length > 3) history = history.slice(-3);
+        localStorage.setItem(historyKey(), JSON.stringify(history));
+
+        renderChart(history);
+
+        activeView.classList.add('hidden');
+        resultsView.classList.remove('hidden');
     }
+
+    function renderChart(history) {
+        const container = document.getElementById('typing-chart');
+        container.innerHTML = '';
+        const avgTypist = 40;
+        const bars = [{ label: 'Average', value: avgTypist, color: 'rgba(255,255,255,0.3)' }]
+            .concat(history.map((v, i) => ({
+                label: i === history.length - 1 ? 'This Test' : 'Attempt ' + (i + 1),
+                value: v,
+                color: i === history.length - 1 ? '#d4af37' : 'rgba(212,175,55,0.4)'
+            })));
+        const maxVal = Math.max(avgTypist, ...history, 10);
+        bars.forEach(b => {
+            const heightPct = Math.max(5, (b.value / maxVal) * 100);
+            const col = document.createElement('div');
+            col.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;width:70px;';
+            col.innerHTML = `<span style="color:${b.color};font-weight:700;margin-bottom:6px;">${b.value}</span><div style="width:40px;height:${heightPct}%;background:${b.color};border-radius:6px 6px 0 0;"></div><span class="text-muted mt-2" style="font-size:0.8rem;">${b.label}</span>`;
+            container.appendChild(col);
+        });
+    }
+
+    document.getElementById('typing-retake-btn').addEventListener('click', () => {
+        resultsView.classList.add('hidden');
+        setupView.classList.remove('hidden');
+    });
 }
+
 
 // ============================================================
 // 8. Password Generator
