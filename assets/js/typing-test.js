@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsView = document.getElementById('typing-results-view');
     const durationSelect = document.getElementById('typing-duration');
     const difficultySelect = document.getElementById('typing-difficulty');
-    const hiddenInput = document.getElementById('typing-hidden-input');
+    const typingInput = document.getElementById('typing-input');
     const textContentEl = document.getElementById('typing-text-content');
     const textBox = document.getElementById('typing-text-box');
     const startBtn = document.getElementById('typing-start-btn');
@@ -95,10 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    hiddenInput.addEventListener('blur', () => {
-        if (playing) setTimeout(() => hiddenInput.focus(), 0);
-    });
-
     startBtn.addEventListener('click', () => {
         const duration = parseInt(durationSelect.value);
         timeLeft = duration;
@@ -107,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setupView.classList.add('hidden');
         resultsView.classList.add('hidden');
         activeView.classList.remove('hidden');
-        hiddenInput.value = '';
+        typingInput.disabled = false;
+        typingInput.value = '';
         previousValue = '';
         totalKeystrokes = 0;
         correctKeystrokes = 0;
@@ -115,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playing = true;
         startTime = Date.now();
         document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
-        setTimeout(() => hiddenInput.focus(), 50);
+        setTimeout(() => typingInput.focus(), 50);
         timerInterval = setInterval(() => {
             timeLeft--;
             document.getElementById('typing-time-display').innerText = formatTime(timeLeft);
@@ -123,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
 
-    hiddenInput.addEventListener('input', e => {
+    typingInput.addEventListener('input', e => {
         if (!playing) return;
         const newValue = e.target.value;
         const spans = textContentEl.querySelectorAll('span');
@@ -162,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playing = false;
         clearInterval(timerInterval);
 
-        const typed = hiddenInput.value.split('');
+        const typed = typingInput.value.split('');
         const spans = textContentEl.querySelectorAll('span');
         let finalCorrectCount = 0;
         typed.forEach((ch, i) => { const span = spans[i]; if (span && ch === span.innerText) finalCorrectCount++; });
@@ -189,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderChart(history);
 
+        typingInput.disabled = true;
         activeView.classList.add('hidden');
         resultsView.classList.remove('hidden');
     }
